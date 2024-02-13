@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.std;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -69,4 +71,13 @@ public class LameVersion extends Structure {
 
     /** Don't make assumptions about the contents! */
     public String features;
+
+    public LameVersion() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of(
+                "major", "minor", "alpha", "beta", "psy_major", "psy_minor", "psy_alpha", "psy_beta", "features"
+        );
+    }
 }

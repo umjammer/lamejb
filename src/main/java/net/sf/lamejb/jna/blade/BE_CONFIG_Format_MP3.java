@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.blade;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -39,5 +41,14 @@ public class BE_CONFIG_Format_MP3 extends Structure {
     public boolean bCRC;
     public boolean bCopyright;
     public boolean bOriginal;
+
+    public BE_CONFIG_Format_MP3() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of(
+                "dwSampleRate", "byMode", "wBitrate", "bPrivate", "bCRC", "bCopyright", "bOriginal"
+        );
+    }
 }
 

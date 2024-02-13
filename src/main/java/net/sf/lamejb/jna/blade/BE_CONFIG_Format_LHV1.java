@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.blade;
 
+import java.util.List;
+
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
@@ -90,5 +92,13 @@ public class BE_CONFIG_Format_LHV1 extends Structure {
 
     /** FUTURE USE, SET TO 0, align strucutre to 331 bytes */
     public byte[] btReserved = new byte[255 - 4 * 4 - 2];
-}
 
+    public BE_CONFIG_Format_LHV1() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of(
+                "dwStructVersion", "dwStructSize", "dwSampleRate", "dwReSampleRate", "nMode", "dwBitrate", "dwMaxBitrate", "nPreset", "dwMpegVersion", "dwPsyModel", "dwEmphasis", "bPrivate", "bCRC", "bCopyright", "bOriginal", "bWriteVBRHeader", "bEnableVBR", "nVBRQuality", "dwVbrAbr_bps", "nVbrMethod", "bNoRes", "bStrictIso", "nQuality", "btReserved"
+        );
+    }
+}

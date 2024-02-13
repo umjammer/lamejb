@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.blade;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -78,6 +80,13 @@ public class BE_VERSION extends Structure {
     public byte byBetaLevel;
     public byte byMMXEnabled;
     public byte[] btReserved = new byte[125]; // embedded    
+
+    public BE_VERSION() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of("byDLLMajorVersion", "byDLLMinorVersion", "byMajorVersion", "byMinorVersion", "byDay", "byMonth", "wYear", "zHomepage", "byAlphaLevel", "byBetaLevel", "byMMXEnabled", "btReserved");
+    }
 
     /**
      * Returns the <code>zHomepage</code> attribute as a String.

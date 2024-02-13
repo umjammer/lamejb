@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.std;
 
+import java.util.List;
+
 import com.sun.jna.NativeLong;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
@@ -266,4 +268,13 @@ public class LameGlobalFlags extends Structure {
     //lame_internal_flags * 	internal_flags
     public Pointer internal_flags;
     public AsmOptimizations asm_optimizations;
+
+    public LameGlobalFlags() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of(
+                "num_samples", "num_channels", "in_samplerate", "out_samplerate", "scale", "scale_left", "scale_right", "analysis", "bWriteVbrTag", "decode_only", "quality", "mode", "force_ms", "free_format", "findReplayGain", "decode_on_the_fly", "brate", "compression_ratio", "copyright", "original", "extension", "emphasis", "error_protection", "strict_ISO", "disable_reservoir", "quant_comp", "quant_comp_short", "experimentalY", "exp_nspsytune", "preset", "VBR", "VBR_q", "VBR_mean_bitrate_kbps", "VBR_min_bitrate_kbps", "VBR_max_bitrate_kbps", "VBR_hard_min", "lowpassfreq", "highpassfreq", "lowpasswidth", "highpasswidth", "psymodel", "maskingadjust", "maskingadjust_short", "ATHonly", "ATHshort", "noATH", "ATHtype", "ATHcurve", "ATHlower", "athaa_type", "athaa_loudapprox", "athaa_sensitivity", "cwlimit", "short_blocks", "useTemporal", "interChRatio", "msfix", "tune", "tune_value_a", "quantization_type", "report", "version", "encoder_delay", "encoder_padding", "framesize", "frameNum", "lame_allocated_gfp", "internal_flags", "asm_optimizations"
+        );
+    }
 }

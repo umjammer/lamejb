@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.blade;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -107,4 +109,11 @@ public class BE_CONFIG extends Structure {
 
     public int dwConfig;
     public BE_CONFIG_Format format = new BE_CONFIG_Format();
+
+    public BE_CONFIG() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of("dwConfig", "format");
+    }
 }

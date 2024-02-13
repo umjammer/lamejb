@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.std;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -42,4 +44,11 @@ public class AsmOptimizations extends Structure {
     public int MMX = 1;
     public int AMD_3DNOW = 2;
     public int SSE = 3;
+
+    public AsmOptimizations() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of("MMX", "AMD_3DNOW", "SSE");
+    }
 }

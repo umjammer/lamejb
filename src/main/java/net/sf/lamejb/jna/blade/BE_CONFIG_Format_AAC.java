@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.blade;
 
+import java.util.List;
+
 import com.sun.jna.Structure;
 
 
@@ -33,4 +35,11 @@ public class BE_CONFIG_Format_AAC extends Structure {
     public byte byMode;
     public short wBitrate;
     public byte byEncodingMethod;
+
+    public BE_CONFIG_Format_AAC() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of("dwSampleRate", "byMode", "wBitrate", "byEncodingMethod");
+    }
 }

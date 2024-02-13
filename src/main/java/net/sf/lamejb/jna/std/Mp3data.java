@@ -24,6 +24,8 @@
 
 package net.sf.lamejb.jna.std;
 
+import java.util.List;
+
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
@@ -76,4 +78,13 @@ public class Mp3data extends Structure {
 
     /** frames decoded counter */
     public int framenum;
+
+    public Mp3data() {}
+
+    @Override
+    protected List<String> getFieldOrder() {
+        return List.of(
+                "header_parsed", "stereo", "samplerate", "bitrate", "mode", "mode_ext", "framesize", "nsamp", "totalframes", "framenum"
+        );
+    }
 }
