@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
@@ -25,37 +25,32 @@
 package net.sf.lamejb.examples;
 
 
+public class Test {
 
-public class Test
-{
-    
-    public Test()
-    {
-    }  
-            
-    public static void main(String[] args) throws Exception
-    {
-        String wavFile = args[0];
-        String mp3FileBase = args[1];       
-
-        TestBladeAPI testBladeAPI = new TestBladeAPI(); 
-        testBladeAPI.testPlainAPI(wavFile, getMP3FileName(mp3FileBase,1));
-        testBladeAPI.testOOPAPI(wavFile, getMP3FileName(mp3FileBase,2));
-
-        TestAPI testAPI = new TestAPI(); 
-        testAPI.testPlainAPI(wavFile,getMP3FileName(mp3FileBase,3));
-        testAPI.testOOPAPIStreamEncoder(wavFile,getMP3FileName(mp3FileBase,4));  
-        testAPI.testOOPAPIStreamEncoderProgressive(wavFile,getMP3FileName(mp3FileBase,5));        
-        testAPI.testOOPAPIGenericEncoder(wavFile,getMP3FileName(mp3FileBase,6));      
-
-        TestCodec testCodec = new TestCodec();
-        testCodec.encodeFile(wavFile, getMP3FileName(mp3FileBase,7));
-        testCodec.encodeStream(wavFile, getMP3FileName(mp3FileBase,8));
+    public Test() {
     }
 
-    
-    public static String getMP3FileName(String mp3FileBase,int num)
-    {
+    public static void main(String[] args) throws Exception {
+        String wavFile = args[0];
+        String mp3FileBase = args[1];
+
+        TestBladeAPI testBladeAPI = new TestBladeAPI();
+        testBladeAPI.testPlainAPI(wavFile, getMP3FileName(mp3FileBase, 1));
+        testBladeAPI.testOOPAPI(wavFile, getMP3FileName(mp3FileBase, 2));
+
+        TestAPI testAPI = new TestAPI();
+        testAPI.testPlainAPI(wavFile, getMP3FileName(mp3FileBase, 3));
+        testAPI.testOOPAPIStreamEncoder(wavFile, getMP3FileName(mp3FileBase, 4));
+        testAPI.testOOPAPIStreamEncoderProgressive(wavFile, getMP3FileName(mp3FileBase, 5));
+        testAPI.testOOPAPIGenericEncoder(wavFile, getMP3FileName(mp3FileBase, 6));
+
+        TestCodec testCodec = new TestCodec();
+        testCodec.encodeFile(wavFile, getMP3FileName(mp3FileBase, 7));
+        testCodec.encodeStream(wavFile, getMP3FileName(mp3FileBase, 8));
+    }
+
+
+    public static String getMP3FileName(String mp3FileBase, int num) {
         return mp3FileBase + "_" + num + ".mp3";
     }
 /*    
@@ -100,5 +95,5 @@ public class Test
         inputStream1.close();
         inputStream2.close();        
     }    
-*/    
+*/
 }

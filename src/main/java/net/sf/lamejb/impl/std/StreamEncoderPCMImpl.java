@@ -10,12 +10,12 @@
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
  * version 2 of the License, or (at your option) any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
@@ -26,25 +26,21 @@ package net.sf.lamejb.impl.std;
 
 import java.io.InputStream;
 
+
 /**
- * PCM (raw) file/stream encoder 
- *
+ * PCM (raw) file/stream encoder
  */
-public class StreamEncoderPCMImpl extends StreamEncoderImpl
-{
-           
-    public StreamEncoderPCMImpl(String sourceFile)
-    {
-        super(sourceFile); 
+public class StreamEncoderPCMImpl extends StreamEncoderImpl {
+
+    public StreamEncoderPCMImpl(String sourceFile) {
+        super(sourceFile);
     }
-    
-    public StreamEncoderPCMImpl(InputStream input)
-    {    
+
+    public StreamEncoderPCMImpl(InputStream input) {
         super(input);
     }
-    
-    public void parseHeader()
-    {
+
+    public void parseHeader() {
         // Nothing to do, there is no header in a raw pcm file/stream
     }
 }
