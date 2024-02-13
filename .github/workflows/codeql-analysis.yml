@@ -7,10 +7,10 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [master]
+    branches: [main]
 #  schedule:
 #    - cron: '0 14 * * 2'
 
@@ -50,6 +50,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
@@ -62,7 +64,9 @@ jobs:
     #   make bootstrap
     #   make release
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -Dmaven.test.skip=ture
+      run: mvn -B package --file pom.xml -s $GITHUB_WORKSPACE/settings.xml -Dmaven.test.skip=ture
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
