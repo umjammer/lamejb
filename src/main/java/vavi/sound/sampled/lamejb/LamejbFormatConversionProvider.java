@@ -292,7 +292,6 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
             LameEncoderFactory encoderFactory = new LameEncoderFactoryImpl();
             encoder = encoderFactory.createGenericEncoder();
 
-            this.format = sourceStream.getFormat();
 
             encoder.getLameConfig().setNumChannels(targetFormat.getChannels());
             encoder.getLameConfig().setInSamplerate((int) targetFormat.getSampleRate());
@@ -304,6 +303,7 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
             encoder.getLameConfig().setQuality(5);
 
             int[] pcmBufLen = new int[1]; int[] mp3BufLen = new int[1];
+            this.format = targetFormat;
             encoder.initEncoding(pcmBufLen, mp3BufLen);
             pcmBuffer = new byte[pcmBufLen[0]];
             encodedBuffer = new byte[mp3BufLen[0]];
