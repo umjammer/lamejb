@@ -6,6 +6,13 @@
   <artifactId>lamejb</artifactId>
   <version>0.2.1-SNAPSHOT</version>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/umjammer/lamejb</url>
+    </repository>
+  </distributionManagement>
+
   <profiles>
     <profile>
       <id>local</id>

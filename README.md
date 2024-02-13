@@ -1,6 +1,6 @@
-[![Release](https://jitpack.io/v/umjammer/Lamejb.svg)](https://jitpack.io/#umjammer/Lamejb)
-[![Java CI](https://github.com/umjammer/Lamejb/actions/workflows/maven.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/maven.yml)
-[![CodeQL](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml)
+[![GitHub Packages](https://github.com/umjammer/lamejb/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/maven-publish.yml)
+[![Java CI](https://github.com/umjammer/lamejb/actions/workflows/maven.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/maven.yml)
+[![CodeQL](https://github.com/umjammer/lamejb/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/codeql-analysis.yml)
 ![Java](https://img.shields.io/badge/Java-17-b07219)
 
 # lamejb
@@ -13,7 +13,7 @@ Java Sound SPI over lamejb (jna)
 
 ### maven
 
- https://jitpack.io/#umjammer/Lamejb
+ https://jitpack.io/#umjammer/lamejb
 
 ### lame
 
