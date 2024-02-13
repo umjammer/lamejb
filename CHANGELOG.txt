@@ -1,0 +1,13 @@
+----------
+0.2.0 (12/09/2008)
+
+* Added mappings for the Blade API
+* Added generic codec that selects the lame or blade API depending on the platform
+  (blade for windows, lame for linux and all the others) and presents a simple but
+  very intuitive API to clients
+
+
+----------
+0.1.0 (21/08/2008)
+
+Initial release
