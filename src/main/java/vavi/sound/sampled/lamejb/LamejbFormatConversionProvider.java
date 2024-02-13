@@ -19,6 +19,8 @@ package vavi.sound.sampled.lamejb;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -38,7 +40,7 @@ import org.tritonus.share.sampled.convert.TSimpleFormatConversionProvider;
  * It uses a sloppy implementation of the MPEG1L3 encoding: It is used as a
  * common denominator. So users can always ask for MPEG1L3 encoding but may get
  * in fact an MPEG2L3 or MPEG2.5L3 encoded stream.
- * <p>
+ * </p>
  *
  * @author Florian Bomers
  */
@@ -292,7 +294,6 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
             LameEncoderFactory encoderFactory = new LameEncoderFactoryImpl();
             encoder = encoderFactory.createGenericEncoder();
 
-
             encoder.getLameConfig().setNumChannels(targetFormat.getChannels());
             encoder.getLameConfig().setInSamplerate((int) targetFormat.getSampleRate());
 
@@ -305,6 +306,9 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
             }
             encoder.getLameConfig().setBrate((int) props.getOrDefault("lamejb.brate", 128));
             encoder.getLameConfig().setQuality((int) props.getOrDefault("lamejb.quality", 5));
+
+            int[] pcmBufLen = new int[1];
+            int[] mp3BufLen = new int[1];
             encoder.initEncoding(pcmBufLen, mp3BufLen);
             pcmBuffer = new byte[pcmBufLen[0]];
             encodedBuffer = new byte[mp3BufLen[0]];

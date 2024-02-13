@@ -1,6 +1,6 @@
 [![Release](https://jitpack.io/v/umjammer/Lamejb.svg)](https://jitpack.io/#umjammer/Lamejb)
 [![Java CI](https://github.com/umjammer/Lamejb/actions/workflows/maven.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/maven.yml)
-[![CodeQL](https://github.com/umjammer/Lamejb/actions/workflows/codeql.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml)
 ![Java](https://img.shields.io/badge/Java-17-b07219)
 
 # lamejb
@@ -39,8 +39,8 @@ TBD
 
 ## TODO
 
-* AudioFileWriter sample
 * ~~encoding parameter by properties~~
+* ~~AudioFileWriter sample~~
 
 ---
 

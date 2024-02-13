@@ -7,6 +7,7 @@
 package vavi.sound.sampled.lamejb;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,6 +36,7 @@ import vavi.util.properties.annotation.PropsEntity;
 import vavix.util.Checksum;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static vavi.sound.sampled.lamejb.LamejbAudioFileWriter.MP3;
 
 
 /**
@@ -108,6 +110,30 @@ Debug.println(outFormat);
         aout.close();
 
         assertEquals(Checksum.getChecksum(out), Checksum.getChecksum(Paths.get(mp3)));
+    }
+
+    @Test
+    @DisplayName("writer")
+    void test3() throws Exception {
+        AudioInputStream ais = AudioSystem.getAudioInputStream(new BufferedInputStream(Files.newInputStream(Path.of(wav))));
+        AudioFormat inFormat = ais.getFormat();
+Debug.println(inFormat);
+        AudioFormat outFormat = new AudioFormat(
+                LamejbFormatConversionProvider.MPEG1L3,
+                inFormat.getSampleRate(),
+                -1,
+                inFormat.getChannels(),
+                -1,
+                -1f,
+                false);
+Debug.println(outFormat);
+        AudioInputStream aout = AudioSystem.getAudioInputStream(outFormat, ais);
+Debug.println(aout.getFormat());
+
+        Path out2 = Paths.get("tmp", "out2.mp3");
+        AudioSystem.write(aout, MP3, new BufferedOutputStream(Files.newOutputStream(out2)));
+
+        assertEquals(Checksum.getChecksum(out2), Checksum.getChecksum(Paths.get(mp3)));
     }
 
     @Test
