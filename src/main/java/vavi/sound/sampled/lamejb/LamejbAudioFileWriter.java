@@ -1,10 +1,4 @@
 /*
- * MpegAudioFileWriter.java
- *
- * This file is part of Tritonus: http://www.tritonus.org/
- */
-
-/*
  *  Copyright (c) 2000 by Florian Bomers
  *
  *
@@ -22,10 +16,6 @@
  *
  */
 
-/*
-|<---            this code is formatted to fit into 80 columns             --->|
-*/
-
 package vavi.sound.sampled.lamejb;
 
 import java.util.Arrays;
@@ -41,14 +31,16 @@ import org.tritonus.share.sampled.file.THeaderlessAudioFileWriter;
  *
  * @author Florian Bomers
  */
-public class MpegAudioFileWriter extends THeaderlessAudioFileWriter {
+public class LamejbAudioFileWriter extends THeaderlessAudioFileWriter {
+
+    public static final AudioFileFormat.Type MP3 = new AudioFileFormat.Type("MP3", "mp3");
+    public static final AudioFileFormat.Type MP2 = new AudioFileFormat.Type("MP2", "mp2");
 
     private static final AudioFileFormat.Type[] FILE_TYPES = {
             //new AudioFileFormat.Type("MPEG", "mpeg"),
             // workaround for the fixed extension problem in AudioFileFormat.Type
             // see org.tritonus.share.sampled.AudioFileTypes.java
-            new AudioFileFormat.Type("MP3", "mp3"),
-            new AudioFileFormat.Type("MP2", "mp2"),
+            MP3, MP2,
     };
 
     public static final AudioFormat.Encoding MPEG1L3 = new AudioFormat.Encoding("MPEG1L3");
@@ -70,7 +62,7 @@ public class MpegAudioFileWriter extends THeaderlessAudioFileWriter {
             new AudioFormat(MPEG2DOT5L3, ALL, ALL, 2, ALL, ALL, true),
     };
 
-    public MpegAudioFileWriter() {
+    public LamejbAudioFileWriter() {
         super(Arrays.asList(FILE_TYPES), Arrays.asList(AUDIO_FORMATS));
         if (TDebug.TraceAudioFileWriter) { TDebug.out("MpegAudioFileWriter.<init>(): begin"); }
         if (TDebug.TraceAudioFileWriter) { TDebug.out("MpegAudioFileWriter.<init>(): end"); }
