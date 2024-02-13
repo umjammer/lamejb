@@ -3,7 +3,48 @@
 [![CodeQL](https://github.com/umjammer/Lamejb/actions/workflows/codeql.yml/badge.svg)](https://github.com/umjammer/Lamejb/actions/workflows/codeql-analysis.yml)
 ![Java](https://img.shields.io/badge/Java-17-b07219)
 
-# Lamejb
+# lamejb
+
+<img src="https://lame.sourceforge.io/images/logo.gif" width="120" /><sub><a href="http://www.brightercreative.co.uk/">© Sam Fisher</a></sub>
+
+Java Sound SPI over lamejb (jna)
+
+## Install
+
+### maven
+
+ https://jitpack.io/#umjammer/Lamejb
+
+### lame
+
+e.g.
+
+```shell
+$ brew install lame
+```
+
+### jvm argument
+
+e.g.
+
+`-Djna.library.path=/opt/local/lib`
+
+## Usage
+
+TBD
+
+## References
+
+* https://lame.sourceforge.io/
+
+## TODO
+
+* encoding parameter by properties
+* AudioFileWriter sample
+
+---
+
+# [Original](https://sourceforge.net/projects/lamejb/)
 
 Java wrapper for the LAME mp3 encoding library. 
 
