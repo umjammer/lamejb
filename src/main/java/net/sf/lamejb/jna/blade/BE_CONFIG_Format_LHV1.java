@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.NativeLong;
 import com.sun.jna.Structure;
 
@@ -32,39 +31,64 @@ import com.sun.jna.Structure;
 public class BE_CONFIG_Format_LHV1 extends Structure {
 
     // STRUCTURE INFORMATION
+
     public int dwStructVersion;
     public int dwStructSize;
 
     // BASIC ENCODER SETTINGS
-    public int dwSampleRate;        // SAMPLERATE OF INPUT FILE
-    public int dwReSampleRate;        // DOWNSAMPLERATE, 0=ENCODER DECIDES
-    public NativeLong nMode;            // BE_MP3_MODE_STEREO, BE_MP3_MODE_DUALCHANNEL, BE_MP3_MODE_MONO
-    public int dwBitrate;        // CBR bitrate, VBR min bitrate
-    public int dwMaxBitrate;        // CBR ignored, VBR Max bitrate
-    public NativeLong nPreset;        // Quality preset, use one of the settings of the LAME_QUALITY_PRESET enum
-    public int dwMpegVersion;        // FUTURE USE, MPEG-1 OR MPEG-2
-    public int dwPsyModel;        // FUTURE USE, SET TO 0
-    public int dwEmphasis;        // FUTURE USE, SET TO 0
+
+    /** SAMPLERATE OF INPUT FILE */
+    public int dwSampleRate;
+    /** DOWNSAMPLERATE, 0=ENCODER DECIDES */
+    public int dwReSampleRate;
+    /** BE_MP3_MODE_STEREO, BE_MP3_MODE_DUALCHANNEL, BE_MP3_MODE_MONO */
+    public NativeLong nMode;
+    /** CBR bitrate, VBR min bitrate */
+    public int dwBitrate;
+    /** CBR ignored, VBR Max bitrate */
+    public int dwMaxBitrate;
+    /** Quality preset, use one of the settings of the LAME_QUALITY_PRESET enum */
+    public NativeLong nPreset;
+    /** FUTURE USE, MPEG-1 OR MPEG-2 */
+    public int dwMpegVersion;
+    /** FUTURE USE, SET TO 0 */
+    public int dwPsyModel;
+    /** FUTURE USE, SET TO 0 */
+    public int dwEmphasis;
 
     // BIT STREAM SETTINGS
-    public boolean bPrivate;        // Set Private Bit (TRUE/FALSE)
-    public boolean bCRC;            // Insert CRC (TRUE/FALSE)
-    public boolean bCopyright;        // Set Copyright Bit (TRUE/FALSE)
-    public boolean bOriginal;        // Set Original Bit (TRUE/FALSE)
+
+    /** Set Private Bit (TRUE/FALSE) */
+    public boolean bPrivate;
+    /** Insert CRC (TRUE/FALSE) */
+    public boolean bCRC;
+    /** Set Copyright Bit (TRUE/FALSE) */
+    public boolean bCopyright;
+    /** Set Original Bit (TRUE/FALSE) */
+    public boolean bOriginal;
 
     // VBR STUFF
-    public boolean bWriteVBRHeader;    // WRITE XING VBR HEADER (TRUE/FALSE)
-    public boolean bEnableVBR;        // USE VBR ENCODING (TRUE/FALSE)
-    public int nVBRQuality;        // VBR QUALITY 0..9
-    public int dwVbrAbr_bps;        // Use ABR in stead of nVBRQuality
+
+    /** WRITE XING VBR HEADER (TRUE/FALSE) */
+    public boolean bWriteVBRHeader;
+    /** USE VBR ENCODING (TRUE/FALSE) */
+    public boolean bEnableVBR;
+    /** VBR QUALITY 0..9 */
+    public int nVBRQuality;
+    /** Use ABR instead of nVBRQuality */
+    public int dwVbrAbr_bps;
     public int nVbrMethod;
-    public boolean bNoRes;            // Disable Bit resorvoir (TRUE/FALSE)
+    /** Disable Bit reservoir (TRUE/FALSE) */
+    public boolean bNoRes;
 
     // MISC SETTINGS
-    public boolean bStrictIso;        // Use strict ISO encoding rules (TRUE/FALSE)
-    public short nQuality;        // Quality Setting, HIGH BYTE should be NOT LOW byte, otherwhise quality=5
 
-    // FUTURE USE, SET TO 0, align strucutre to 331 bytes
+    /** Use strict ISO encoding rules (TRUE/FALSE) */
+    public boolean bStrictIso;
+    /** Quality Setting, HIGH BYTE should be NOT LOW byte, otherwhise quality=5 */
+    public short nQuality;
+
+    /** FUTURE USE, SET TO 0, align strucutre to 331 bytes */
     public byte[] btReserved = new byte[255 - 4 * 4 - 2];
 }
 

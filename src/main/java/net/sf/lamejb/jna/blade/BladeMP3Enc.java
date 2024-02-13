@@ -1,6 +1,5 @@
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.NativeLong;
@@ -16,11 +15,10 @@ import com.sun.jna.ptr.NativeLongByReference;
  */
 public interface BladeMP3Enc extends Library {
 
-    BladeMP3Enc INSTANCE =
-            (BladeMP3Enc) Native.loadLibrary((Platform.isWindows() ? "lame_enc" : null), BladeMP3Enc.class);
+    BladeMP3Enc INSTANCE = Native.load((Platform.isWindows() ? "lame_enc" : null), BladeMP3Enc.class);
 
+    // encoding formats
 
-    /* encoding formats */
     /**
      * Corresponds to C declaration:
      * <code>
@@ -29,7 +27,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_CONFIG_MP3 = 0;
+    int BE_CONFIG_MP3 = 0;
 
     /**
      * Corresponds to C declaration:
@@ -39,7 +37,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_CONFIG_LAME = 256;
+    int BE_CONFIG_LAME = 256;
 
     /* error codes */
 
@@ -51,7 +49,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_SUCCESSFUL = 0x00000000;
+    int BE_ERR_SUCCESSFUL = 0x00000000;
 
     /**
      * Corresponds to C declaration:
@@ -61,7 +59,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_INVALID_FORMAT = 0x00000001;
+    int BE_ERR_INVALID_FORMAT = 0x00000001;
 
     /**
      * Corresponds to C declaration:
@@ -71,7 +69,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_INVALID_FORMAT_PARAMETERS = 0x00000002;
+    int BE_ERR_INVALID_FORMAT_PARAMETERS = 0x00000002;
 
     /**
      * Corresponds to C declaration:
@@ -81,7 +79,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_NO_MORE_HANDLES = 0x00000003;
+    int BE_ERR_NO_MORE_HANDLES = 0x00000003;
 
     /**
      * Corresponds to C declaration:
@@ -91,7 +89,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_INVALID_HANDLE = 0x00000004;
+    int BE_ERR_INVALID_HANDLE = 0x00000004;
 
     /**
      * Corresponds to C declaration:
@@ -101,7 +99,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_ERR_BUFFER_TOO_SMALL = 0x00000005;
+    int BE_ERR_BUFFER_TOO_SMALL = 0x00000005;
 
     /* other constants */
 
@@ -113,7 +111,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int BE_MAX_HOMEPAGE = 128;
+    int BE_MAX_HOMEPAGE = 128;
 
     /* format specific variables */
 
@@ -125,7 +123,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final NativeLong BE_MP3_MODE_STEREO = new NativeLong(0);
+    NativeLong BE_MP3_MODE_STEREO = new NativeLong(0);
 
     /**
      * Corresponds to C declaration:
@@ -135,7 +133,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final NativeLong BE_MP3_MODE_JSTEREO = new NativeLong(1);
+    NativeLong BE_MP3_MODE_JSTEREO = new NativeLong(1);
 
     /**
      * Corresponds to C declaration:
@@ -145,7 +143,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final NativeLong BE_MP3_MODE_DUALCHANNEL = new NativeLong(2);
+    NativeLong BE_MP3_MODE_DUALCHANNEL = new NativeLong(2);
 
     /**
      * Corresponds to C declaration:
@@ -155,7 +153,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final NativeLong BE_MP3_MODE_MONO = new NativeLong(3);
+    NativeLong BE_MP3_MODE_MONO = new NativeLong(3);
 
     /**
      * Corresponds to C declaration:
@@ -165,7 +163,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int MPEG1 = 1;
+    int MPEG1 = 1;
 
     /**
      * Corresponds to C declaration:
@@ -175,7 +173,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int MPEG2 = 0;
+    int MPEG2 = 0;
 
     /**
      * Corresponds to C declaration:
@@ -185,7 +183,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int CURRENT_STRUCT_VERSION = 1;
+    int CURRENT_STRUCT_VERSION = 1;
 
     /**
      * Corresponds to C declaration:
@@ -195,8 +193,7 @@ public interface BladeMP3Enc extends Library {
      *  </pre>
      * </code>
      */
-    public static final int CURRENT_STRUCT_SIZE = 331;
-
+    int CURRENT_STRUCT_SIZE = 331;
 
     /**
      * Corresponds with the C method:
@@ -206,7 +203,7 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beCloseStream(NativeLong hbeStream);
+    NativeLong beCloseStream(NativeLong hbeStream);
 
     /**
      * Corresponds with the C method:
@@ -216,7 +213,7 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beDeinitStream(NativeLong hbeStream, byte[] pOutput, IntByReference pdwOutput);
+    NativeLong beDeinitStream(NativeLong hbeStream, byte[] pOutput, IntByReference pdwOutput);
 
     /**
      * Corresponds with the C method:
@@ -226,8 +223,8 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beEncodeChunk(NativeLong hbeStream, int nSamples, short[] pSamples,
-                                    byte[] pOutput, IntByReference pdwOutput);
+    NativeLong beEncodeChunk(NativeLong hbeStream, int nSamples, short[] pSamples,
+                             byte[] pOutput, IntByReference pdwOutput);
 
     /**
      * Corresponds with the C method:
@@ -241,8 +238,8 @@ public interface BladeMP3Enc extends Library {
      *
      * @see #beEncodeChunk(NativeLong, int, short[], byte[], IntByReference)
      */
-    public NativeLong beEncodeChunk(NativeLong hbeStream, int nSamples, byte[] pSamples,
-                                    byte[] pOutput, IntByReference pdwOutput);
+    NativeLong beEncodeChunk(NativeLong hbeStream, int nSamples, byte[] pSamples,
+                             byte[] pOutput, IntByReference pdwOutput);
 
     /**
      * Corresponds with the C method:
@@ -253,8 +250,8 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beEncodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l,
-                                              float[] buffer_r, byte[] pOutput, IntByReference pdwOutput);
+    NativeLong beEncodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l,
+                                       float[] buffer_r, byte[] pOutput, IntByReference pdwOutput);
 
     /**
      * Corresponds with the C method:
@@ -264,7 +261,7 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beFlushNoGap(NativeLong hbeStream, byte[] pOutput, IntByReference pdwOutput);
+    NativeLong beFlushNoGap(NativeLong hbeStream, byte[] pOutput, IntByReference pdwOutput);
 
     /**
      * Corresponds with the C method:
@@ -274,8 +271,8 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beInitStream(BE_CONFIG pbeConfig, IntByReference pDwSamples,
-                                   IntByReference pDwBufferSize, NativeLongByReference phbeStream);
+    NativeLong beInitStream(BE_CONFIG pbeConfig, IntByReference pDwSamples,
+                            IntByReference pDwBufferSize, NativeLongByReference phbeStream);
 
     /**
      * Corresponds with the C method:
@@ -285,7 +282,7 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public void beVersion(BE_VERSION pbeVersion);
+    void beVersion(BE_VERSION pbeVersion);
 
     /**
      * Corresponds with the C method:
@@ -295,8 +292,7 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beWriteVBRHeader(String pszMP3FileName);
-
+    NativeLong beWriteVBRHeader(String pszMP3FileName);
 
     /**
      * Corresponds with the C method:
@@ -306,6 +302,5 @@ public interface BladeMP3Enc extends Library {
      * </pre>
      * </code>
      */
-    public NativeLong beInitStream(NativeLong hbeStream, String lpszFileName);
-
+    NativeLong beInitStream(NativeLong hbeStream, String lpszFileName);
 }

@@ -22,8 +22,8 @@
  * Boston, MA  02111-1307, USA.
  */
 
-
 package net.sf.lamejb.jna.std;
+
 
 /**
  * Presets:

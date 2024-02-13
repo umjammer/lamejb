@@ -1,6 +1,5 @@
 package net.sf.lamejb.examples;
 
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -33,7 +32,6 @@ public class TestCodec {
         codec.encodeFile(wavFile, mp3File, config);
     }
 
-
     public void encodeStream(String wavFile, String mp3File) throws Exception {
         LamejbCodecFactory codecFactory;
         if (Platform.isWindows())
@@ -50,6 +48,4 @@ public class TestCodec {
 
         codec.encodeStream(is, os, config);
     }
-
-
 }

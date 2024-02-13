@@ -77,6 +77,7 @@ public class StreamEncoderWAVImpl extends StreamEncoderImpl {
         }
     }
 
+    @Override
     public void parseHeader() {
         // http://ccrma.stanford.edu/courses/422/projects/WaveFormat/
         try {
@@ -151,9 +152,8 @@ public class StreamEncoderWAVImpl extends StreamEncoderImpl {
     public static boolean readString(String name, InputStream stream) throws IOException {
         byte[] nameBuff = new byte[name.length()];
         int read = stream.read(nameBuff);
-        StringBuffer nameReaded = new StringBuffer();
-        for (int i = 0; i < nameBuff.length; i++)
-            nameReaded.append((char) nameBuff[i]);
+        StringBuilder nameReaded = new StringBuilder();
+        for (byte b : nameBuff) nameReaded.append((char) b);
 
         return nameReaded.toString().equals(name);
     }
@@ -182,5 +182,4 @@ public class StreamEncoderWAVImpl extends StreamEncoderImpl {
     public static long toULong(byte value) {
         return toUShort(value);
     }
-
 }

@@ -40,26 +40,26 @@ public interface Encoder {
      *
      * @return the LAME configuration object.
      */
-    public LameConfig getLameConfig();
+    LameConfig getLameConfig();
 
     /**
      * Returns the internal global flags object used by this encoder.
      *
      * @return the internal global flags object.
      */
-    public LameGlobalFlags getLameFlags();
+    LameGlobalFlags getLameFlags();
 
     /**
      * Informs whether this encoder is closed. If closed must be disposed.
      *
-     * @return true if this enconder is closed.
+     * @return true if this encoder is closed.
      */
-    public boolean isClosed();
+    boolean isClosed();
 
     /**
      * Closes this encoder. A closed encoder cannot be reused.
      */
-    public void close();
+    void close();
 
     /**
      * Writes the VBR tag info to the specified MP3 file.
@@ -72,5 +72,5 @@ public interface Encoder {
      *
      * @param mp3File the file path of the MP3 file.
      */
-    public void writeVbrTag(String mp3File);
+    void writeVbrTag(String mp3File);
 }

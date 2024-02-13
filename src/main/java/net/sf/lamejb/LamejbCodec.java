@@ -22,7 +22,6 @@
 
 package net.sf.lamejb;
 
-
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -41,8 +40,7 @@ public interface LamejbCodec {
      * @param outputFile the mp3 filename
      * @param config     configuration parameters for the encoder
      */
-    public void encodeFile(String inputFile, String outputFile, LamejbConfig config);
-
+    void encodeFile(String inputFile, String outputFile, LamejbConfig config);
 
     /**
      * Encode PCM/WAV input stream into mp3 output stream
@@ -51,10 +49,8 @@ public interface LamejbCodec {
      * @param outputStream the mp3 stream
      * @param config       configuration parameters for the encoder
      */
-    public OutputStream encodeStream(InputStream inputStream, OutputStream outputStream, LamejbConfig config);
-
+    OutputStream encodeStream(InputStream inputStream, OutputStream outputStream, LamejbConfig config);
 
     //public void decodeFile(File inputFile, File outputFile);
     //public void decodeStream(InputStream inputStream, OutputStream outputStream);
-
 }

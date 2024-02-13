@@ -38,6 +38,7 @@ public class GenericEncoderImpl extends EncoderImpl implements GenericEncoder {
         super();
     }
 
+    @Override
     public void initEncoding(int[] pcmBufferSize, int[] mp3BufferSize) {
         if ((pcmBufferSize.length != 1) || (mp3BufferSize.length != 1))
             throw new LamejbException("Expected a byte array of length = 1");
@@ -55,14 +56,15 @@ public class GenericEncoderImpl extends EncoderImpl implements GenericEncoder {
         mp3BufferSize[0] = mOutBufferSize;
     }
 
+    @Override
     public int encodeBuffer(byte[] pPCMBuffer, int size, byte[] pMP3Buffer) {
         if (!encodingTaskInProcess) throw new LamejbException("There is no encoding task in process");
 
         return encodeBuffer(flags, pPCMBuffer, size, pMP3Buffer);
     }
 
+    @Override
     public int encodeFlush(byte[] pMP3Buffer) {
         return super.encodeFlush(pMP3Buffer);
     }
-
 }

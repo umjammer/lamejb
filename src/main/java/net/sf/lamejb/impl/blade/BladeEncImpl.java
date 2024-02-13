@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.impl.blade;
 
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -46,7 +45,7 @@ import net.sf.lamejb.jna.blade.BladeMP3Enc;
 
 public class BladeEncImpl implements BladeEnc {
 
-
+    @Override
     public void encode(String wavFile, String mp3File, BE_CONFIG beConfig) {
 
         FileInputStream wavStream = null;
@@ -72,7 +71,7 @@ public class BladeEncImpl implements BladeEnc {
         }
     }
 
-
+    @Override
     public void encode(InputStream inputStream, OutputStream mp3Stream,
                        BE_CONFIG beConfig, boolean isWav) {
 
@@ -107,7 +106,7 @@ public class BladeEncImpl implements BladeEnc {
                 mp3Stream.write(pMP3Buffer, 0, dwWrite);
             }
 
-            // Deinit the beStream
+            // Definite the beStream
             dwWrite = beStream.deinitStream(pMP3Buffer);
 
             // Are there any bytes returned from the DeInit call?
@@ -123,7 +122,7 @@ public class BladeEncImpl implements BladeEnc {
         beStream.close();
     }
 
-
+    @Override
     public BeStream initStream(BE_CONFIG beConfig) {
         IntByReference pDwSamples = new IntByReference();
         IntByReference pDwMP3Buffer = new IntByReference();
@@ -139,12 +138,10 @@ public class BladeEncImpl implements BladeEnc {
         return new BeStreamImpl(hbeStream, nSamples, outputBufferSize);
     }
 
-
+    @Override
     public BE_VERSION getVersion() {
         BE_VERSION version = new BE_VERSION();
         BladeMP3Enc.INSTANCE.beVersion(version);
         return version;
     }
-
-
 }

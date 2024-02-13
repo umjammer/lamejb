@@ -24,17 +24,20 @@
 
 package net.sf.lamejb;
 
+import java.io.Serial;
+
+
 /**
  * The <code>LamejbException</code> is the exception class used to throw errors
  * detected inside the Lamejb library.
  * <br />
- * If a LAME method returns an non-null error code, this code is used to raise
+ * If a LAME method returns a non-null error code, this code is used to raise
  * this exception.
  */
 public class LamejbException extends RuntimeException {
 
+    @Serial
     private static final long serialVersionUID = 1L;
-
 
     protected int code;
 
@@ -84,7 +87,6 @@ public class LamejbException extends RuntimeException {
         this.code = code;
     }
 
-
     /**
      * Returns the LAME error code.
      *
@@ -94,5 +96,4 @@ public class LamejbException extends RuntimeException {
     public int getCode() {
         return code;
     }
-
 }

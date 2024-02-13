@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.std;
 
-
 import com.sun.jna.Callback;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
@@ -37,16 +36,13 @@ import com.sun.jna.Pointer;
  */
 public interface Lame extends Library {
 
-    Lame INSTANCE =
-            (Lame) Native.loadLibrary((Platform.isWindows() ? "libmp3lame" : "mp3lame"), Lame.class);
+    Lame INSTANCE = Native.load((Platform.isWindows() ? "libmp3lame" : "mp3lame"), Lame.class);
 
-
-    //void (*func)(const char *, va_list)
-    public interface LameMsgCallback extends Callback {
+    // void (*func)(const char *, va_list)
+    interface LameMsgCallback extends Callback {
 
         void callback(String format, String params);
     }
-
 
     /**
      * REQUIRED:
@@ -73,14 +69,12 @@ public interface Lame extends Library {
      */
     int lame_set_num_samples(LameGlobalFlags flags, int samples);
 
-
     /**
      * number of samples.  default = 2^32-1
      *
      * <pre>unsigned long CDECL lame_get_num_samples(const lame_global_flags *);</pre>
      */
     int lame_get_num_samples(LameGlobalFlags flags);
-
 
     /**
      * input sample rate in Hz.  default = 44100hz
@@ -250,7 +244,7 @@ public interface Lame extends Library {
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -262,7 +256,7 @@ public interface Lame extends Library {
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -272,7 +266,6 @@ public interface Lame extends Library {
      */
     int lame_get_quality(LameGlobalFlags flags);
 
-
     /**
      * mode = 0,1,2,3 = stereo, jstereo, dual channel (not supported), mono
      * default: lame picks based on compression ration and input channels
@@ -280,7 +273,6 @@ public interface Lame extends Library {
      * <pre>int CDECL lame_set_mode(lame_global_flags *, MPEG_mode);</pre>
      */
     int lame_set_mode(LameGlobalFlags flags, int MPEG_mode);
-
 
     /**
      * mode = 0,1,2,3 = stereo, jstereo, dual channel (not supported), mono
@@ -372,7 +364,6 @@ public interface Lame extends Library {
      */
     int lame_get_decode_on_the_fly(LameGlobalFlags flags);
 
-
     /**
      * DEPRECATED: now does the same as lame_set_findReplayGain()
      * default = 0 (disabled)
@@ -407,7 +398,6 @@ public interface Lame extends Library {
      */
     int lame_get_ReplayGain_decode(LameGlobalFlags flags);
 
-
     /**
      * DEPRECATED: now does the same as lame_set_decode_on_the_fly()
      * default = 0 (disabled)
@@ -431,7 +421,6 @@ public interface Lame extends Library {
      * <pre>int CDECL lame_set_nogap_total(lame_global_flags*, int);</pre>
      */
     int lame_set_nogap_total(LameGlobalFlags flags, int total);
-
 
     /**
      * counter for gapless encoding
@@ -515,7 +504,6 @@ public interface Lame extends Library {
      */
     int lame_set_brate(LameGlobalFlags flags, int brate);
 
-
     /**
      * set one of brate compression ratio.  default is compression ratio of 11.
      *
@@ -591,7 +579,6 @@ public interface Lame extends Library {
      * <pre>int CDECL lame_set_padding_type(lame_global_flags *, Padding_type);</pre>
      */
     int lame_set_padding_type(LameGlobalFlags flags, int padding_type);
-
 
     /**
      * padding_type. 0=pad no frames  1=pad all frames 2=adjust padding(default)
@@ -708,16 +695,17 @@ public interface Lame extends Library {
      */
     int lame_get_experimentalZ(LameGlobalFlags flags);
 
-
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
+    /**
+     * Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
      */
     int lame_set_exp_nspsytune(LameGlobalFlags flags, int tune);
 
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
+    /**
+     *  Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
      */
     int lame_get_exp_nspsytune(LameGlobalFlags flags);
 
@@ -725,7 +713,6 @@ public interface Lame extends Library {
      * <pre>void CDECL lame_set_msfix(lame_global_flags *, double);</pre>
      */
     void lame_set_msfix(LameGlobalFlags flags, double msfix);
-
 
     /**
      * <pre>float CDECL lame_get_msfix(const lame_global_flags *);</pre>
@@ -825,14 +812,12 @@ public interface Lame extends Library {
      */
     int lame_get_VBR_hard_min(LameGlobalFlags flags);
 
-
     /**
      * for preset
      *
      * <pre>int CDECL lame_set_preset_expopts(lame_global_flags *, int);</pre>
      */
     int lame_set_preset_expopts(LameGlobalFlags flags, int expopts);
-
 
     /**
      * freq in Hz to apply lowpass. Default = 0 = lame chooses.  -1 = disabled
@@ -848,7 +833,6 @@ public interface Lame extends Library {
      */
     int lame_get_lowpassfreq(LameGlobalFlags flags);
 
-
     /**
      * width of transition band, in Hz.  Default = one polyphase filter band
      *
@@ -862,7 +846,6 @@ public interface Lame extends Library {
      * <pre>int CDECL lame_get_lowpasswidth(const lame_global_flags *);</pre>
      */
     int lame_get_lowpasswidth(LameGlobalFlags flags);
-
 
     /**
      * freq in Hz to apply highpass. Default = 0 = lame chooses.  -1 = disabled
@@ -1393,13 +1376,14 @@ public interface Lame extends Library {
      */
     int lame_encode_buffer_float(
             LameGlobalFlags gfp,
-            float buffer_l[],
-            float buffer_r[],
+            float[] buffer_l,
+            float[] buffer_r,
             int nsamples,
             byte[] mp3buf,
             int mp3buf_size);
 
-    /* as lame_encode_buffer, but for long's 
+    /**
+     * as lame_encode_buffer, but for long's
      * !! NOTE: !! data must still be scaled to be in the same range as 
      * short int, +/- 32768  
      *
@@ -1408,45 +1392,47 @@ public interface Lame extends Library {
      *
      * <pre>
      *     int CDECL lame_encode_buffer_long(
-            lame_global_flags*  gfp,          // global context handle  
-            const long     buffer_l [],       // PCM data for left channel     
-            const long     buffer_r [],       // PCM data for right channel    
-            const int           nsamples,      // number of samples per channel 
-            unsigned char*      mp3buf,        // pointer to encoded MP3 stream 
-            const int           mp3buf_size ); // number of valid octets in this stream
-       </pre>     
+     *       lame_global_flags*  gfp,          // global context handle
+     *       const long     buffer_l [],       // PCM data for left channel
+     *       const long     buffer_r [],       // PCM data for right channel
+     *       const int           nsamples,      // number of samples per channel
+     *       unsigned char*      mp3buf,        // pointer to encoded MP3 stream
+     *       const int           mp3buf_size ); // number of valid octets in this stream
+     *  </pre>
      */
     int lame_encode_buffer_long(
             LameGlobalFlags gfp,
-            int buffer_l[],
-            int buffer_r[],
+            int[] buffer_l,
+            int[] buffer_r,
             int nsamples,
             byte[] mp3buf,
             int mp3buf_size);
 
-    /* Same as lame_encode_buffer_long(), but with correct scaling. 
+    /**
+     * Same as lame_encode_buffer_long(), but with correct scaling.
      * !! NOTE: !! data must still be scaled to be in the same range as  
      * type 'long'.   Data should be in the range:  +/- 2^(8*size(long)-1)
      *
      * <pre>
      *    int CDECL lame_encode_buffer_long2(
-            lame_global_flags*  gfp,           // global context handle  
-            const long     buffer_l [],       // PCM data for left channel     
-            const long     buffer_r [],       // PCM data for right channel    
-            const int           nsamples,      // number of samples per channel 
-            unsigned char*      mp3buf,        // pointer to encoded MP3 stream 
-            const int           mp3buf_size ); // number of valid octets in this stream
+     *       lame_global_flags*  gfp,           // global context handle
+     *       const long     buffer_l [],       // PCM data for left channel
+     *       const long     buffer_r [],       // PCM data for right channel
+     *       const int           nsamples,      // number of samples per channel
+     *       unsigned char*      mp3buf,        // pointer to encoded MP3 stream
+     *       const int           mp3buf_size ); // number of valid octets in this stream
      * </pre>
      */
     int lame_encode_buffer_long2(
             LameGlobalFlags gfp,
-            int buffer_l[],
-            int buffer_r[],
+            int[] buffer_l,
+            int[] buffer_r,
             int nsamples,
             byte[] mp3buf,
             int mp3buf_size);
 
-    /* as lame_encode_buffer, but for int's 
+    /**
+     * as lame_encode_buffer, but for int's
      * !! NOTE: !! input should be scaled to the maximum range of 'int'
      * If int is 4 bytes, then the values should range from
      * +/- 2147483648.  
@@ -1456,18 +1442,18 @@ public interface Lame extends Library {
      * 
      * <pre>
      *     int CDECL lame_encode_buffer_int(
-            lame_global_flags*  gfp,           // global context handle  
-            const int      buffer_l [],       // PCM data for left channel     
-            const int      buffer_r [],       // PCM data for right channel    
-            const int           nsamples,      // number of samples per channel 
-            unsigned char*      mp3buf,        // pointer to encoded MP3 stream 
-            const int           mp3buf_size ); // number of valid octets in this stream
+     *       lame_global_flags*  gfp,           // global context handle
+     *       const int      buffer_l [],       // PCM data for left channel
+     *       const int      buffer_r [],       // PCM data for right channel
+     *       const int           nsamples,      // number of samples per channel
+     *       unsigned char*      mp3buf,        // pointer to encoded MP3 stream
+     *       const int           mp3buf_size ); // number of valid octets in this stream
      * </pre>
      */
     int lame_encode_buffer_int(
             LameGlobalFlags gfp,
-            int buffer_l[],
-            int buffer_r[],
+            int[] buffer_l,
+            int[] buffer_r,
             int nsamples,
             byte[] mp3buf,
             int mp3buf_size);
@@ -1493,7 +1479,7 @@ public interface Lame extends Library {
      */
     int lame_encode_flush(LameGlobalFlags gfp, byte[] mp3buf, int size);
 
-    /*
+    /**
      * OPTIONAL:
      * lame_encode_flush_nogap will flush the internal mp3 buffers and pad
      * the last frame with ancillary data so it is a complete mp3 frame.
@@ -1512,9 +1498,9 @@ public interface Lame extends Library {
      *
      * <pre>
      *     int CDECL lame_encode_flush_nogap(
-            lame_global_flags *  gfp,    // global context handle          
-            unsigned char*       mp3buf, // pointer to encoded MP3 stream  
-            int                  size);  // number of valid octets in this stream 
+     *       lame_global_flags *  gfp,    // global context handle
+     *       unsigned char*       mp3buf, // pointer to encoded MP3 stream
+     *       int                  size);  // number of valid octets in this stream
      * </pre>
      */
     int lame_encode_flush_nogap(
@@ -1522,7 +1508,7 @@ public interface Lame extends Library {
             byte[] mp3buf,
             int size);
 
-    /*
+    /**
      * OPTIONAL:
      * Normally, this is called by lame_init_params().  It writes id3v2 and
      * Xing headers into the front of the bitstream, and sets frame counters
@@ -1531,12 +1517,12 @@ public interface Lame extends Library {
      *
      * <pre>
      *     int CDECL lame_init_bitstream(
-              lame_global_flags *  gfp);    // global context handle
+     *         lame_global_flags *  gfp);    // global context handle
      * </pre>    
      */
     int lame_init_bitstream(LameGlobalFlags gfp);
 
-    /*
+    /**
      * OPTIONAL:    some simple statistics
      * a bitrate histogram to visualize the distribution of used frame sizes
      * a stereo mode histogram to visualize the distribution of used stereo
@@ -1551,8 +1537,8 @@ public interface Lame extends Library {
      *
      * <pre>
      *    void CDECL lame_bitrate_hist( 
-                const lame_global_flags *const gfp, 
-                int   bitrate_count[14] );
+     *           const lame_global_flags *const gfp,
+     *           int   bitrate_count[14] );
      * </pre>
      */
     void lame_bitrate_hist(
@@ -1836,5 +1822,4 @@ public interface Lame extends Library {
      * <pre>int CDECL lame_decode_exit(void);</pre>
      */
     int lame_decode_exit();
-
 }

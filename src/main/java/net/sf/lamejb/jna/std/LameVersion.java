@@ -51,16 +51,22 @@ public class LameVersion extends Structure {
 
     public int major;
     public int minor;
-    public int alpha;               // 0 if not an alpha version                  
-    public int beta;                // 0 if not a beta version                    
+    /** 0 if not an alpha version */
+    public int alpha;
+    /** 0 if not a beta version */
+    public int beta;
 
     // version of the psy model 
+
     public int psy_major;
     public int psy_minor;
-    public int psy_alpha;           // 0 if not an alpha version                  
-    public int psy_beta;            // 0 if not a beta version                    
+    /** 0 if not an alpha version */
+    public int psy_alpha;
+    /** 0 if not a beta version */
+    public int psy_beta;
 
     // compile time features 
-    public String features;    // Don't make assumptions about the contents!    
 
+    /** Don't make assumptions about the contents! */
+    public String features;
 }

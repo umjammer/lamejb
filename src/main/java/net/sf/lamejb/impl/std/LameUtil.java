@@ -45,37 +45,18 @@ public class LameUtil {
     public static void checkError(int err) {
         if (err == LameErrorcodes.LAME_OKAY) return; // Idem LAME_NOERROR
 
-        String errMsg;
-        switch (err) {
-        case LameErrorcodes.LAME_GENERICERROR:
-            errMsg = "LAME_GENERICERROR";
-            break;
-        case LameErrorcodes.LAME_NOMEM:
-            errMsg = "LAME_NOMEM";
-            break;
-        case LameErrorcodes.LAME_BADBITRATE:
-            errMsg = "LAME_BADBITRATE";
-            break;
-        case LameErrorcodes.LAME_BADSAMPFREQ:
-            errMsg = "LAME_BADSAMPFREQ";
-            break;
-        case LameErrorcodes.LAME_INTERNALERROR:
-            errMsg = "LAME_INTERNALERROR";
-            break;
-        case LameErrorcodes.FRONTEND_READERROR:
-            errMsg = "FRONTEND_READERROR";
-            break;
-        case LameErrorcodes.FRONTEND_WRITEERROR:
-            errMsg = "FRONTEND_WRITEERROR";
-            break;
-        case LameErrorcodes.FRONTEND_FILETOOLARGE:
-            errMsg = "FRONTEND_FILETOOLARGE";
-            break;
-        default:
-            errMsg = "UNKNOWN";
-        }
+        String errMsg = switch (err) {
+            case LameErrorcodes.LAME_GENERICERROR -> "LAME_GENERICERROR";
+            case LameErrorcodes.LAME_NOMEM -> "LAME_NOMEM";
+            case LameErrorcodes.LAME_BADBITRATE -> "LAME_BADBITRATE";
+            case LameErrorcodes.LAME_BADSAMPFREQ -> "LAME_BADSAMPFREQ";
+            case LameErrorcodes.LAME_INTERNALERROR -> "LAME_INTERNALERROR";
+            case LameErrorcodes.FRONTEND_READERROR -> "FRONTEND_READERROR";
+            case LameErrorcodes.FRONTEND_WRITEERROR -> "FRONTEND_WRITEERROR";
+            case LameErrorcodes.FRONTEND_FILETOOLARGE -> "FRONTEND_FILETOOLARGE";
+            default -> "UNKNOWN";
+        };
 
         throw new LamejbException("ERROR: " + errMsg, err);
     }
-
 }

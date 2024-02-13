@@ -22,7 +22,6 @@
 
 package net.sf.lamejb;
 
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -41,6 +40,7 @@ import net.sf.lamejb.std.StreamEncoder;
  */
 public class LameCodec implements LamejbCodec {
 
+    @Override
     public void encodeFile(String inputFile, String outputFile, LamejbConfig config) {
         if (inputFile == null)
             throw new IllegalArgumentException("input file == null");
@@ -72,7 +72,7 @@ public class LameCodec implements LamejbCodec {
         encoder.encode(outputFile);
     }
 
-
+    @Override
     public OutputStream encodeStream(InputStream inputStream, OutputStream outputStream, LamejbConfig config) {
         if (inputStream == null)
             throw new IllegalArgumentException("input stream == null");
@@ -97,12 +97,6 @@ public class LameCodec implements LamejbCodec {
         return outputStream;
     }
 
-
-	/*
-	private LameConfig lameInit(LamejbConfig config)
-	{
-		
-	}
-	*/
-
+//    private LameConfig lameInit(LamejbConfig config) {
+//    }
 }

@@ -49,20 +49,31 @@ import com.sun.jna.Structure;
  */
 public class Mp3data extends Structure {
 
-    public int header_parsed;   /* 1 if header was parsed and following data was
-                                        computed                                       */
-    public int stereo;          /* number of channels                             */
-    public int samplerate;      /* sample rate                                    */
-    public int bitrate;         /* bitrate                                        */
-    public int mode;            /* mp3 frame type                                 */
-    public int mode_ext;        /* mp3 frame type                                 */
-    public int framesize;       /* number of samples per mp3 frame                */
+    /** 1 if header was parsed and following data was computed */
+    public int header_parsed;
 
-    /* this data is only computed if mpglib detects a Xing VBR header */
-    public NativeLong nsamp; /* number of samples in mp3 file.                 */
-    public int totalframes;     /* total number of frames in mp3 file             */
+    /** number of channels */
+    public int stereo;
+    /** sample rate */
+    public int samplerate;
+    /** bitrate */
+    public int bitrate;
+    /** mp3 frame type */
+    public int mode;
+    /** mp3 frame type */
+    public int mode_ext;
+    /** number of samples per mp3 frame */
+    public int framesize;
 
-    /* this data is not currently computed by the mpglib routines */
-    public int framenum;        /* frames decoded counter                         */
+    // this data is only computed if mpglib detects a Xing VBR header
 
+    /** number of samples in mp3 file. */
+    public NativeLong nsamp;
+    /** total number of frames in mp3 file */
+    public int totalframes;
+
+    // this data is not currently computed by the mpglib routines
+
+    /** frames decoded counter */
+    public int framenum;
 }

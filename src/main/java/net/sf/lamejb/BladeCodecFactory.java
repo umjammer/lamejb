@@ -30,10 +30,9 @@ package net.sf.lamejb;
  */
 public class BladeCodecFactory implements LamejbCodecFactory {
 
+    @Override
     public LamejbCodec createCodec() {
         System.out.println("Using blade codec");
         return new BladeCodec();
     }
-
-
 }

@@ -46,7 +46,7 @@ public interface LameEncoderFactory {
      * @param file the path of the audio source.
      * @return a new MP3 stream encoder
      */
-    public StreamEncoder createStreamEncoder(String file);
+    StreamEncoder createStreamEncoder(String file);
 
     /**
      * Creates a new MP3 stream encoder using the specified stream as audio source.
@@ -56,7 +56,7 @@ public interface LameEncoderFactory {
      * @param stream the path of the audio source.
      * @return a new MP3 stream encoder
      */
-    public StreamEncoder createStreamEncoder(InputStream stream);
+    StreamEncoder createStreamEncoder(InputStream stream);
 
     /**
      * Creates a new MP3 generic stream encoder.
@@ -68,5 +68,5 @@ public interface LameEncoderFactory {
      *
      * @return a new MP3 stream encoder
      */
-    public GenericEncoder createGenericEncoder();
+    GenericEncoder createGenericEncoder();
 }

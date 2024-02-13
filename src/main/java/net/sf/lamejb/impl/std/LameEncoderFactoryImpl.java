@@ -24,9 +24,9 @@
 
 package net.sf.lamejb.impl.std;
 
-
 import java.io.InputStream;
 
+import net.sf.lamejb.LamejbException;
 import net.sf.lamejb.std.GenericEncoder;
 import net.sf.lamejb.std.LameEncoderFactory;
 import net.sf.lamejb.std.StreamEncoder;
@@ -40,6 +40,7 @@ public class LameEncoderFactoryImpl implements LameEncoderFactory {
     public LameEncoderFactoryImpl() {
     }
 
+    @Override
     public StreamEncoder createStreamEncoder(String file) {
         if (StreamEncoderWAVImpl.isWAV(file))
             return new StreamEncoderWAVImpl(file);
@@ -47,29 +48,28 @@ public class LameEncoderFactoryImpl implements LameEncoderFactory {
             return new StreamEncoderPCMImpl(file);
     }
 
+    @Override
     public StreamEncoder createStreamEncoder(InputStream stream) {
         if (StreamEncoderWAVImpl.isWAV(stream))
             return new StreamEncoderWAVImpl(stream);
         else
             return new StreamEncoderPCMImpl(stream);
     }
-    /*
-    public StreamEncoder createStreamEncoder(InputStream stream,String mime)
-    {
-        // http://en.wikipedia.org/wiki/WAV
-        if (mime != null)
-            if (mime.equals("audio/wav") || mime.equals("audio/wave") || 
-                mime.equals("audio/x-wav"))        
-                return new StreamEncoderWAVImpl(stream);        
-            else
-                throw new LamejbException("Unsupported mime type:" + mime);
-        else
-            return new StreamEncoderPCMImpl(stream);
-    }
-    */
 
+//    public StreamEncoder createStreamEncoder(InputStream stream, String mime) {
+//        // http://en.wikipedia.org/wiki/WAV
+//        if (mime != null)
+//            if (mime.equals("audio/wav") || mime.equals("audio/wave") ||
+//                    mime.equals("audio/x-wav"))
+//                return new StreamEncoderWAVImpl(stream);
+//            else
+//                throw new LamejbException("Unsupported mime type:" + mime);
+//        else
+//            return new StreamEncoderPCMImpl(stream);
+//    }
+
+    @Override
     public GenericEncoder createGenericEncoder() {
         return new GenericEncoderImpl();
     }
-
 }

@@ -45,7 +45,6 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
     protected BufferedInputStream sourceStream;
     protected byte[] pPCMBuffer;
 
-
     public StreamEncoderImpl(String sourceFile) {
         this(createFileInputStream(sourceFile));
     }
@@ -71,10 +70,12 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
 
     public abstract void parseHeader();
 
+    @Override
     public InputStream getSourceInputStream() {
         return sourceStream;
     }
 
+    @Override
     public void close() {
         if (closed) return;
 
@@ -90,6 +91,7 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
         this.sourceStream = null;
     }
 
+    @Override
     public void encode(String mp3File) {
         // http://stuff.mit.edu/afs/sipb/user/gamache/src/lame-3.91/Dll/BladeMP3EncDLL.c        
         // http://www.koders.com/cpp/fid8B71B2E32247F195DA00237E702C5031468A55C1.aspx?s=lame_encode_buffer        
@@ -117,6 +119,7 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
         close();
     }
 
+    @Override
     public void encode(OutputStream mp3Stream) {
         // http://stuff.mit.edu/afs/sipb/user/gamache/src/lame-3.91/Dll/BladeMP3EncDLL.c        
         // http://www.koders.com/cpp/fid8B71B2E32247F195DA00237E702C5031468A55C1.aspx?s=lame_encode_buffer        
@@ -162,6 +165,7 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
         }
     }
 
+    @Override
     public int initEncoding() {
         initEncodingTask();
 
@@ -176,6 +180,7 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
         return mOutBufferSize;
     }
 
+    @Override
     public int encodeBuffer(byte[] pMP3Buffer) {
         if (sourceStream == null) return 0;
 
@@ -210,5 +215,4 @@ public abstract class StreamEncoderImpl extends EncoderImpl implements StreamEnc
             throw new LamejbException(ex);
         }
     }
-
 }

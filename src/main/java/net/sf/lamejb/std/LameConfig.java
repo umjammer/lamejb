@@ -45,52 +45,49 @@ public interface LameConfig {
      *
      * @return the flags object.
      */
-    public LameGlobalFlags getLameFlags();
+    LameGlobalFlags getLameFlags();
 
     /**
      * number of samples.  default = 2^32-1
      *
      * <pre>int CDECL lame_set_num_samples(lame_global_flags *, unsigned long);</pre>
      */
-    public void setNumSamples(int samples);
-
+    void setNumSamples(int samples);
 
     /**
      * number of samples.  default = 2^32-1
      *
      * <pre>unsigned long CDECL lame_get_num_samples(const lame_global_flags *);</pre>
      */
-    public int getNumSamples();
-
+    int getNumSamples();
 
     /**
      * input sample rate in Hz.  default = 44100hz
      *
      * <pre>int CDECL lame_set_in_samplerate(lame_global_flags *, int);</pre>
      */
-    public void setInSamplerate(int rate);
+    void setInSamplerate(int rate);
 
     /**
      * input sample rate in Hz.  default = 44100hz
      *
      * <pre>int CDECL lame_get_in_samplerate(const lame_global_flags *);</pre>
      */
-    public int getInSamplerate();
-
+    int getInSamplerate();
 
     /**
      * number of channels in input stream. default=2
      *
      * <pre>int CDECL lame_set_num_channels(lame_global_flags *, int);</pre>
      */
-    public void setNumChannels(int channels);
+    void setNumChannels(int channels);
 
     /**
      * number of channels in input stream. default=2
      *
      * <pre>int CDECL lame_get_num_channels(const lame_global_flags *);</pre>
      */
-    public int getNumChannels();
+    int getNumChannels();
 
     /**
      * scale the input by this amount before encoding.  default=0 (disabled)
@@ -98,7 +95,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_scale(lame_global_flags *, float);</pre>
      */
-    public void setScale(float scale);
+    void setScale(float scale);
 
     /**
      * scale the input by this amount before encoding.  default=0 (disabled)
@@ -106,7 +103,7 @@ public interface LameConfig {
      *
      * <pre>float CDECL lame_get_scale(const lame_global_flags *);</pre>
      */
-    public float getScale();
+    float getScale();
 
     /**
      * scale the channel 0 (left) input by this amount before encoding.
@@ -115,7 +112,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_scale_left(lame_global_flags *, float);</pre>
      */
-    public void setScaleLeft(float scale);
+    void setScaleLeft(float scale);
 
     /**
      * scale the channel 0 (left) input by this amount before encoding.
@@ -124,7 +121,7 @@ public interface LameConfig {
      *
      * <pre>float CDECL lame_get_scale_left(const lame_global_flags *);</pre>
      */
-    public float getScaleLeft();
+    float getScaleLeft();
 
     /**
      * scale the channel 1 (right) input by this amount before encoding.
@@ -133,7 +130,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_scale_right(lame_global_flags *, float);</pre>
      */
-    public void setScaleRight(float scale);
+    void setScaleRight(float scale);
 
     /**
      * scale the channel 1 (right) input by this amount before encoding.
@@ -142,7 +139,7 @@ public interface LameConfig {
      *
      * <pre>float CDECL lame_get_scale_right(const lame_global_flags *);</pre>
      */
-    public float getScaleRight();
+    float getScaleRight();
 
     /**
      * output sample rate in Hz.  default = 0, which means Lame picks best value
@@ -154,7 +151,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_out_samplerate(lame_global_flags *, int);</pre>
      */
-    public void setOutSamplerate(int rate);
+    void setOutSamplerate(int rate);
 
     /**
      * output sample rate in Hz.  default = 0, which means Lame picks best value
@@ -166,20 +163,20 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_out_samplerate(const lame_global_flags *);</pre>
      */
-    public int getOutSamplerate();
+    int getOutSamplerate();
 
     /**
      * 1=cause Lame to collect data for an MP3 frame analyzer. default=0
      * <pre>int CDECL lame_set_analysis(lame_global_flags *, int);</pre>
      */
-    public void setAnalysis(boolean analysis);
+    void setAnalysis(boolean analysis);
 
     /**
      * 1=cause Lame to collect data for an MP3 frame analyzer. default=0
      *
      * <pre>int CDECL lame_get_analysis(const lame_global_flags *);</pre>
      */
-    public boolean isAnalysis();
+    boolean isAnalysis();
 
     /**
      * 1 = write a Xing VBR header frame.
@@ -188,7 +185,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_bWriteVbrTag(lame_global_flags *, int);</pre>
      */
-    public void setBWriteVbrTag(boolean vbrTag);
+    void setBWriteVbrTag(boolean vbrTag);
 
     /**
      * 1 = write a Xing VBR header frame.
@@ -198,21 +195,21 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_bWriteVbrTag(const lame_global_flags *);</pre>
      */
-    public boolean isBWriteVbrTag();
+    boolean isBWriteVbrTag();
 
     /**
      * 1=decode only.  use lame/mpglib to convert mp3/ogg to wav.  default=0
      *
      * <pre>int CDECL lame_set_decode_only(lame_global_flags *, int);</pre>
      */
-    public void setDecodeOnly(boolean deconly);
+    void setDecodeOnly(boolean deconly);
 
     /**
      * 1=decode only.  use lame/mpglib to convert mp3/ogg to wav.  default=0
      *
      * <pre>int CDECL lame_get_decode_only(lame_global_flags *);</pre>
      */
-    public boolean isDecodeOnly();
+    boolean isDecodeOnly();
 
     /**
      * 1=encode a Vorbis .ogg file.  default=0
@@ -220,7 +217,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_ogg(lame_global_flags*, int);</pre>
      */
-    public void setOgg(boolean ogg);
+    void setOgg(boolean ogg);
 
     /**
      * 1=encode a Vorbis .ogg file.  default=0
@@ -228,11 +225,11 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_ogg(const lame_global_flags *);</pre>
      */
-    public boolean isOgg();
+    boolean isOgg();
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -240,11 +237,11 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_quality(lame_global_flags *, int);</pre>
      */
-    public void setQuality(int quality);
+    void setQuality(int quality);
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -252,7 +249,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_quality(const lame_global_flags *);</pre>
      */
-    public int getQuality();
+    int getQuality();
 
     /**
      * mode = 0,1,2,3 = stereo, jstereo, dual channel (not supported), mono
@@ -260,7 +257,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_mode(lame_global_flags *, MPEG_mode);</pre>
      */
-    public void setMode(int mpeg_mode);
+    void setMode(int mpeg_mode);
 
     /**
      * mode = 0,1,2,3 = stereo, jstereo, dual channel (not supported), mono
@@ -268,7 +265,7 @@ public interface LameConfig {
      *
      * <pre>MPEG_mode CDECL lame_get_mode(const lame_global_flags *);</pre>
      */
-    public int getMode();
+    int getMode();
 
     /**
      * mode_automs.  Use a M/S mode with a switching threshold based on
@@ -277,7 +274,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_mode_automs(lame_global_flags *, int);</pre>
      */
-    public void setModeAutoms(int mode);
+    void setModeAutoms(int mode);
 
     /**
      * mode_automs.  Use a M/S mode with a switching threshold based on
@@ -286,7 +283,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_mode_automs(const lame_global_flags *);</pre>
      */
-    public int getModeAutoms();
+    int getModeAutoms();
 
     /**
      * force_ms.  Force M/S for all frames.  For testing only.
@@ -294,7 +291,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_force_ms(lame_global_flags *, int);</pre>
      */
-    public void setForceMs(boolean force);
+    void setForceMs(boolean force);
 
     /**
      * force_ms.  Force M/S for all frames.  For testing only.
@@ -302,35 +299,35 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_force_ms(const lame_global_flags *);</pre>
      */
-    public boolean isForceMs();
+    boolean isForceMs();
 
     /**
      * use free_format?  default = 0 (disabled)
      *
      * <pre>int CDECL lame_set_free_format(lame_global_flags *, int);</pre>
      */
-    public void setFreeFormat(boolean free);
+    void setFreeFormat(boolean free);
 
     /**
      * use free_format?  default = 0 (disabled)
      *
      * <pre>int CDECL lame_get_free_format(const lame_global_flags *);</pre>
      */
-    public boolean isFreeFormat();
+    boolean isFreeFormat();
 
     /**
      * perform ReplayGain analysis?  default = 0 (disabled)
      *
      * <pre>int CDECL lame_set_findReplayGain(lame_global_flags *, int);</pre>
      */
-    public void setFindReplayGain(boolean repGain);
+    void setFindReplayGain(boolean repGain);
 
     /**
      * perform ReplayGain analysis?  default = 0 (disabled)
      *
      * <pre>int CDECL lame_get_findReplayGain(const lame_global_flags *);</pre>
      */
-    public boolean isFindReplayGain();
+    boolean isFindReplayGain();
 
     /**
      * decode on the fly. Search for the peak sample. If the ReplayGain
@@ -340,7 +337,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_decode_on_the_fly(lame_global_flags *, int);</pre>
      */
-    public void setDecodeOnTheFly(boolean onthefly);
+    void setDecodeOnTheFly(boolean onthefly);
 
     /**
      * decode on the fly. Search for the peak sample. If the ReplayGain
@@ -350,8 +347,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_decode_on_the_fly(const lame_global_flags *);</pre>
      */
-    public boolean isDecodeOnTheFly();
-
+    boolean isDecodeOnTheFly();
 
     /**
      * DEPRECATED: now does the same as lame_set_findReplayGain()
@@ -359,7 +355,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_ReplayGain_input(lame_global_flags *, int);</pre>
      */
-    public void setReplayGainInput(boolean repGain);
+    void setReplayGainInput(boolean repGain);
 
     /**
      * DEPRECATED: now does the same as lame_set_findReplayGain()
@@ -367,7 +363,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_ReplayGain_input(const lame_global_flags *);</pre>
      */
-    public boolean isReplayGainInput();
+    boolean isReplayGainInput();
 
     /**
      * DEPRECATED: now does the same as
@@ -376,7 +372,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_ReplayGain_decode(lame_global_flags *, int);</pre>
      */
-    public void setReplayGainDecode(boolean repGain);
+    void setReplayGainDecode(boolean repGain);
 
     /**
      * DEPRECATED: now does the same as
@@ -385,7 +381,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_ReplayGain_decode(const lame_global_flags *);</pre>
      */
-    public boolean isReplayGainDecode();
+    boolean isReplayGainDecode();
 
     /**
      * DEPRECATED: now does the same as lame_set_decode_on_the_fly()
@@ -393,7 +389,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_findPeakSample(lame_global_flags *, int);</pre>
      */
-    public void setFindPeakSample(boolean findPeak);
+    void setFindPeakSample(boolean findPeak);
 
     /**
      * DEPRECATED: now does the same as lame_set_decode_on_the_fly()
@@ -401,35 +397,35 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_findPeakSample(const lame_global_flags *);</pre>
      */
-    public boolean isFindPeakSample();
+    boolean isFindPeakSample();
 
     /**
      * counter for gapless encoding
      *
      * <pre>int CDECL lame_set_nogap_total(lame_global_flags*, int);</pre>
      */
-    public void setNogapTotal(int total);
+    void setNogapTotal(int total);
 
     /**
      * counter for gapless encoding
      *
      * <pre>int CDECL lame_get_nogap_total(const lame_global_flags*);</pre>
      */
-    public int getNogapTotal();
+    int getNogapTotal();
 
     /**
      * counter for gapless encoding
      *
      * <pre>int CDECL lame_set_nogap_currentindex(lame_global_flags* , int);</pre>
      */
-    public void setNogapCurrentIndex(int currindex);
+    void setNogapCurrentIndex(int currindex);
 
     /**
      * counter for gapless encoding
      *
      * <pre>int CDECL lame_get_nogap_currentindex(const lame_global_flags*);</pre>
      */
-    public int getNogapCurrentindex();
+    int getNogapCurrentindex();
 
     /**
      * OPTIONAL:
@@ -447,8 +443,7 @@ public interface LameConfig {
      * <pre>int CDECL lame_set_errorf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
-    public void setErrorf(Lame.LameMsgCallback func);
-
+    void setErrorf(Lame.LameMsgCallback func);
 
     /**
      * OPTIONAL:
@@ -466,7 +461,7 @@ public interface LameConfig {
      * <pre>int CDECL lame_set_debugf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
-    public void setDebugf(Lame.LameMsgCallback func);
+    void setDebugf(Lame.LameMsgCallback func);
 
     /**
      * OPTIONAL:
@@ -484,310 +479,306 @@ public interface LameConfig {
      * <pre>int CDECL lame_set_msgf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
-    public void setMsgf(Lame.LameMsgCallback func);
+    void setMsgf(Lame.LameMsgCallback func);
 
     /**
      * set one of brate compression ratio.  default is compression ratio of 11.
      *
      * <pre>int CDECL lame_set_brate(lame_global_flags *, int);</pre>
      */
-    public void setBrate(int brate);
+    void setBrate(int brate);
 
     /**
      * set one of brate compression ratio.  default is compression ratio of 11.
      *
      * <pre>int CDECL lame_get_brate(const lame_global_flags *);
      */
-    public int getBrate();
+    int getBrate();
 
     /*
      * <pre>int CDECL lame_set_compression_ratio(lame_global_flags *, float);</pre>
      */
-    public void setCompressionRatio(float ratio);
+    void setCompressionRatio(float ratio);
 
     /*
      * <pre>float CDECL lame_get_compression_ratio(const lame_global_flags *);</pre>
      */
-    public float getCompressionRatio();
+    float getCompressionRatio();
 
     /**
      * <pre>int CDECL lame_set_preset( lame_global_flags*  gfp, int );</pre>
      */
-    public void setPreset(int preset);
+    void setPreset(int preset);
 
     /**
      * <pre>int CDECL lame_set_asm_optimizations( lame_global_flags*  gfp, int, int );</pre>
      */
-    public void setAsmOptimizations(int param1, int param2);
+    void setAsmOptimizations(int param1, int param2);
 
     /**
      * mark as copyright.  default=0
      *
      * <pre>int CDECL lame_set_copyright(lame_global_flags *, int);</pre>
      */
-    public void setCopyright(boolean cprght);
+    void setCopyright(boolean cprght);
 
     /**
      * mark as copyright.  default=0
      *
      * <pre>int CDECL lame_get_copyright(const lame_global_flags *);</pre>
      */
-    public boolean isCopyright();
+    boolean isCopyright();
 
     /**
      * mark as original.  default=1
      *
      * <pre>int CDECL lame_set_original(lame_global_flags *, int);</pre>
      */
-    public void setOriginal(boolean original);
+    void setOriginal(boolean original);
 
     /**
      * mark as original.  default=1
      *
      * <pre>int CDECL lame_get_original(const lame_global_flags *);</pre>
      */
-    public boolean isOriginal();
+    boolean isOriginal();
 
     /**
      * error_protection.  Use 2 bytes from each frame for CRC checksum. default=0
      *
      * <pre>int CDECL lame_set_error_protection(lame_global_flags *, int);</pre>
      */
-    public void setErrorProtection(boolean prot);
+    void setErrorProtection(boolean prot);
 
     /**
      * error_protection.  Use 2 bytes from each frame for CRC checksum. default=0
      *
      * <pre>int CDECL lame_get_error_protection(const lame_global_flags *);</pre>
      */
-    public boolean isErrorProtection();
+    boolean isErrorProtection();
 
     /**
      * padding_type. 0=pad no frames  1=pad all frames 2=adjust padding(default)
      *
      * <pre>int CDECL lame_set_padding_type(lame_global_flags *, Padding_type);</pre>
      */
-    public void setPaddingType(int padding_type);
+    void setPaddingType(int padding_type);
 
     /**
      * padding_type. 0=pad no frames  1=pad all frames 2=adjust padding(default)
      *
      * <pre>Padding_type CDECL lame_get_padding_type(const lame_global_flags *);</pre>
      */
-    public int getPaddingType();
+    int getPaddingType();
 
     /**
      * MP3 'private extension' bit  Meaningless.  default=0
      *
      * <pre>int CDECL lame_set_extension(lame_global_flags *, int);</pre>
      */
-    public void setExtension(int ext);
+    void setExtension(int ext);
 
     /**
      * MP3 'private extension' bit  Meaningless.  default=0
      *
      * <pre>int CDECL lame_get_extension(const lame_global_flags *); </pre>
      */
-    public int getExtension();
+    int getExtension();
 
     /**
      * enforce strict ISO compliance.  default=0
      *
      * <pre>int CDECL lame_set_strict_ISO(lame_global_flags *, int);</pre>
      */
-    public void setStrictISO(boolean iso);
+    void setStrictISO(boolean iso);
 
     /**
      * enforce strict ISO compliance.  default=0
      *
      * <pre>int CDECL lame_get_strict_ISO(const lame_global_flags *);</pre>
      */
-    public boolean isStrictISO();
+    boolean isStrictISO();
 
     /**
      * disable the bit reservoir. For testing only. default=0
      *
      * <pre>int CDECL lame_set_disable_reservoir(lame_global_flags *, int);</pre>
      */
-    public void setDisableReservoir(boolean preset);
+    void setDisableReservoir(boolean preset);
 
     /**
      * disable the bit reservoir. For testing only. default=0
      *
      * <pre>int CDECL lame_get_disable_reservoir(const lame_global_flags *);</pre>
      */
-    public boolean isDisableReservoir();
+    boolean isDisableReservoir();
 
     /**
      * select a different "best quantization" function. default=0
      *
      * <pre>int CDECL lame_set_quant_comp(lame_global_flags *, int);</pre>
      */
-    public void setQuantComp(int quant);
+    void setQuantComp(int quant);
 
     /**
      * select a different "best quantization" function. default=0
      *
      * <pre>int CDECL lame_get_quant_comp(const lame_global_flags *);</pre>
      */
-    public int getQuantComp();
+    int getQuantComp();
 
     /**
      * select a different "best quantization" function. default=0
      *
      * <pre>int CDECL lame_set_quant_comp_short(lame_global_flags *, int);</pre>
      */
-    public void setQuantCompShort(int quant);
+    void setQuantCompShort(int quant);
 
     /**
      * select a different "best quantization" function. default=0
      *
      * <pre>int CDECL lame_get_quant_comp_short(const lame_global_flags *);</pre>
      */
-    public int getQuantCompShort();
+    int getQuantCompShort();
 
     /**
      * <pre>int CDECL lame_set_experimentalX(lame_global_flags *, int);</pre>
      */
-    public void setExperimentalX(int x);
+    void setExperimentalX(int x);
 
     /**
      * <pre>int CDECL lame_get_experimentalX(const lame_global_flags *);</pre>
      */
-    public int getExperimentalX();
+    int getExperimentalX();
 
     /**
      * another experimental option.  for testing only
      *
      * <pre>int CDECL lame_set_experimentalY(lame_global_flags *, int);</pre>
      */
-    public void setExperimentalY(int y);
+    void setExperimentalY(int y);
 
     /**
      * another experimental option.  for testing only
      *
      * <pre>int CDECL lame_get_experimentalY(const lame_global_flags *);</pre>
      */
-    public int getExperimentalY();
+    int getExperimentalY();
 
     /**
      * another experimental option.  for testing only
      *
      * <pre>int CDECL lame_set_experimentalZ(lame_global_flags *, int);</pre>
      */
-    public void setExperimentalZ(int z);
+    void setExperimentalZ(int z);
 
     /**
      * another experimental option.  for testing only
      *
      * <pre>int CDECL lame_get_experimentalZ(const lame_global_flags *);</pre>
      */
-    public int getExperimentalZ();
+    int getExperimentalZ();
 
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
+    /**
+     * Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
      */
-    public void setExpNspsytune(int tune);
+    void setExpNspsytune(int tune);
 
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
+    /**
+     * Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
      */
-    public int getExpNspsytune();
+    int getExpNspsytune();
 
     /**
      * <pre>void CDECL lame_set_msfix(lame_global_flags *, double);</pre>
      */
-    public void setMsfix(double msfix);
+    void setMsfix(double msfix);
 
     /**
      * <pre>float CDECL lame_get_msfix(const lame_global_flags *);</pre>
      */
-    public float getMsfix();
-
+    float getMsfix();
 
     /**
      * <pre>int lame_set_exp_nspsytune2_int( lame_global_flags*, int, int);</pre>
      */
-    public int setExpNspsytune2Int(int p1, int p2);
+    int setExpNspsytune2Int(int p1, int p2);
 
     /**
      * <pre>float lame_set_exp_nspsytune2_real( lame_global_flags*, int, float);</pre>
      */
-    public float setExpNspsytune2Real(int p1, float p2);
+    float setExpNspsytune2Real(int p1, float p2);
 
     /**
      * <pre>void * lame_set_exp_nspsytune2_pointer( lame_global_flags*, int, void *);</pre>
      */
-    public int setExpNspsytune2Pointer(int p1, int p2);
+    int setExpNspsytune2Pointer(int p1, int p2);
 
     /**
      * Types of VBR.  default = vbr_off = CBR
      *
      * <pre>int CDECL lame_set_VBR(lame_global_flags *, vbr_mode);</pre>
      */
-    public void setVBR(int vbr_mode);
+    void setVBR(int vbr_mode);
 
     /**
      * Types of VBR.  default = vbr_off = CBR
      *
      * <pre>vbr_mode CDECL lame_get_VBR(const lame_global_flags *);</pre>
      */
-    public int getVBR();
+    int getVBR();
 
     /**
      * VBR quality level.  0=highest  9=lowest
      *
      * <pre>int CDECL lame_set_VBR_q(lame_global_flags *, int);</pre>
      */
-    public void setVBRQ(int level);
+    void setVBRQ(int level);
 
     /**
      * VBR quality level.  0=highest  9=lowest
      *
      * <pre>int CDECL lame_get_VBR_q(const lame_global_flags *);</pre>
      */
-    public int getVBRq();
+    int getVBRq();
 
     /**
      * Ignored except for VBR=vbr_abr (ABR mode)
      *
      * <pre>int CDECL lame_set_VBR_mean_bitrate_kbps(lame_global_flags *, int);</pre>
      */
-    public void setVBRMeanBitrateKbps(int bitrate);
-
+    void setVBRMeanBitrateKbps(int bitrate);
 
     /**
      * Ignored except for VBR=vbr_abr (ABR mode)
      *
      * <pre>int CDECL lame_get_VBR_mean_bitrate_kbps(const lame_global_flags *);</pre>
      */
-    public int getVBRMeanBitrateKbps();
-
+    int getVBRMeanBitrateKbps();
 
     /**
      * <pre>int CDECL lame_set_VBR_min_bitrate_kbps(const lame_global_flags *);</pre>
      */
-    public void setVBRMinBitrateKbps(int bitrate);
-
+    void setVBRMinBitrateKbps(int bitrate);
 
     /**
      * <pre>int CDECL lame_get_VBR_min_bitrate_kbps(const lame_global_flags *);</pre>
      */
-    public int getVBRMinBitrateKbps();
+    int getVBRMinBitrateKbps();
 
     /**
      * <pre>int CDECL lame_set_VBR_max_bitrate_kbps(const lame_global_flags *);</pre>
      */
-    public void setVBRMaxBitrateKbps(int bitrate);
-
+    void setVBRMaxBitrateKbps(int bitrate);
 
     /**
      * <pre>int CDECL lame_get_VBR_max_bitrate_kbps(const lame_global_flags *);</pre>
      */
-    public int getVBRMaxBitrateKbps();
-
+    int getVBRMaxBitrateKbps();
 
     /**
      * 1=strictly enforce VBR_min_bitrate.  Normally it will be violated for
@@ -795,7 +786,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_VBR_hard_min(lame_global_flags *, int);</pre>
      */
-    public void setVBRHardMin(boolean vbr);
+    void setVBRHardMin(boolean vbr);
 
     /**
      * 1=strictly enforce VBR_min_bitrate.  Normally it will be violated for
@@ -803,198 +794,196 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_VBR_hard_min(const lame_global_flags *);</pre>
      */
-    public boolean isVBRHardMin();
+    boolean isVBRHardMin();
 
     /**
      * for preset
      *
      * <pre>int CDECL lame_set_preset_expopts(lame_global_flags *, int);</pre>
      */
-    public void setPresetExpopts(int expopts);
-
+    void setPresetExpopts(int expopts);
 
     /**
      * freq in Hz to apply lowpass. Default = 0 = lame chooses.  -1 = disabled
      *
      * <pre>int CDECL lame_set_lowpassfreq(lame_global_flags *, int);</pre>
      */
-    public void setLowpassfreq(int freq);
+    void setLowpassfreq(int freq);
 
     /**
      * freq in Hz to apply lowpass. Default = 0 = lame chooses.  -1 = disabled
      *
      * <pre>int CDECL lame_get_lowpassfreq(const lame_global_flags *);</pre>
      */
-    public int getLowpassfreq();
+    int getLowpassfreq();
 
     /**
      * width of transition band, in Hz.  Default = one polyphase filter band
      *
      * <pre>int CDECL lame_set_lowpasswidth(lame_global_flags *, int);</pre>
      */
-    public void setLowpasswidth(int width);
+    void setLowpasswidth(int width);
 
     /**
      * width of transition band, in Hz.  Default = one polyphase filter band
      *
      * <pre>int CDECL lame_get_lowpasswidth(const lame_global_flags *);</pre>
      */
-    public int getLowpasswidth();
+    int getLowpasswidth();
 
     /**
      * freq in Hz to apply highpass. Default = 0 = lame chooses.  -1 = disabled
      *
      * <pre>int CDECL lame_set_highpassfreq(lame_global_flags *, int);</pre>
      */
-    public void setHighpassfreq(int freq);
+    void setHighpassfreq(int freq);
 
     /**
      * freq in Hz to apply highpass. Default = 0 = lame chooses.  -1 = disabled
      *
      * <pre>int CDECL lame_get_highpassfreq(const lame_global_flags *);</pre>
      */
-    public int getHighpassfreq();
+    int getHighpassfreq();
 
     /**
      * width of transition band, in Hz.  Default = one polyphase filter band
      *
      * <pre>int CDECL lame_set_highpasswidth(lame_global_flags *, int);</pre>
      */
-    public void setHighpasswidth(int width);
+    void setHighpasswidth(int width);
 
     /**
      * width of transition band, in Hz.  Default = one polyphase filter band
      *
      * <pre>int CDECL lame_get_highpasswidth(const lame_global_flags *);</pre>
      */
-    public int getHighpasswidth();
+    int getHighpasswidth();
 
     /**
      * only use ATH for masking
      *
      * <pre>int CDECL lame_set_ATHonly(lame_global_flags *, int);</pre>
      */
-    public void setATHonly(boolean athOnly);
+    void setATHonly(boolean athOnly);
 
     /**
      * only use ATH for masking
      *
      * <pre>int CDECL lame_get_ATHonly(const lame_global_flags *);</pre>
      */
-    public boolean isATHonly();
+    boolean isATHonly();
 
     /**
      * only use ATH for short blocks
      *
      * <pre>int CDECL lame_set_ATHshort(lame_global_flags *, int);</pre>
      */
-    public void setATHshort(boolean athShort);
+    void setATHshort(boolean athShort);
 
     /**
      * only use ATH for short blocks
      *
      * <pre>int CDECL lame_get_ATHshort(const lame_global_flags *);</pre>
      */
-    public boolean isATHshort();
+    boolean isATHshort();
 
     /**
      * disable ATH
      *
      * <pre>int CDECL lame_set_noATH(lame_global_flags *, int);</pre>
      */
-    public void setNoATH(boolean noATH);
+    void setNoATH(boolean noATH);
 
     /**
      * disable ATH
      *
      * <pre>int CDECL lame_get_noATH(const lame_global_flags *);</pre>
      */
-    public boolean isNoATH();
+    boolean isNoATH();
 
     /**
      * select ATH formula
      *
      * <pre>int CDECL lame_set_ATHtype(lame_global_flags *, int);</pre>
      */
-    public void setATHtype(int ATHType);
+    void setATHtype(int ATHType);
 
     /**
      * select ATH formula
      *
      * <pre>int CDECL lame_get_ATHtype(lame_global_flags *);</pre>
      */
-    public int getATHtype();
+    int getATHtype();
 
     /**
      * lower ATH by this many db
      *
      * <pre>int CDECL lame_set_ATHlower(lame_global_flags *, float);</pre>
      */
-    public void setATHlower(float ATHLower);
+    void setATHlower(float ATHLower);
 
     /**
      * lower ATH by this many db
      *
      * <pre>floag CDECL lame_get_ATHlower(lame_global_flags *);</pre>
      */
-    public float getATHlower();
+    float getATHlower();
 
     /**
      * select ATH adaptive adjustment type
      *
      * <pre>int CDECL lame_set_athaa_type( lame_global_flags *, int);</pre>
      */
-    public void setAthaaType(int ATHadjust);
+    void setAthaaType(int ATHadjust);
 
     /**
      * select ATH adaptive adjustment type
      *
      * <pre>int CDECL lame_get_athaa_type( const lame_global_flags *);</pre>
      */
-    public int getAthaaType();
+    int getAthaaType();
 
     /**
      * select the loudness approximation used by the ATH adaptive auto-leveling
      *
      * <pre>int CDECL lame_set_athaa_loudapprox( lame_global_flags *, int);</pre>
      */
-    public void setAthaaLoudapprox(int loud);
+    void setAthaaLoudapprox(int loud);
 
     /**
      * select the loudness approximation used by the ATH adaptive auto-leveling
      *
      * <pre>int CDECL lame_get_athaa_loudapprox( const lame_global_flags *);</pre>
      */
-    public int getAthaaLoudapprox();
-
+    int getAthaaLoudapprox();
 
     /**
      * adjust (in dB) the point below which adaptive ATH level adjustment occurs
      *
      * <pre>int CDECL lame_set_athaa_sensitivity( lame_global_flags *, float);</pre>
      */
-    public void setAthaaSensitivity(float sen);
+    void setAthaaSensitivity(float sen);
 
     /**
      * adjust (in dB) the point below which adaptive ATH level adjustment occurs
      *
      * <pre>float CDECL lame_get_athaa_sensitivity( const lame_global_flags* );</pre>
      */
-    public float getAthaaSensitivity();
+    float getAthaaSensitivity();
 
     /**
      * predictability limit (ISO tonality formula)
      *
      * <pre>int CDECL lame_set_cwlimit(lame_global_flags *, int);</pre>
      */
-    public void setCwlimit(int limit);
+    void setCwlimit(int limit);
 
     /**
      * predictability limit (ISO tonality formula)
      *
      * <pre>int CDECL lame_get_cwlimit(const lame_global_flags *);</pre>
      */
-    public int getCwlimit();
+    int getCwlimit();
 
     /**
      * allow blocktypes to differ between channels?
@@ -1002,7 +991,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_allow_diff_short(lame_global_flags *, int);</pre>
      */
-    public void setAllowDiffShort(int allow);
+    void setAllowDiffShort(int allow);
 
     /**
      * allow blocktypes to differ between channels?
@@ -1010,64 +999,63 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_allow_diff_short(const lame_global_flags *);</pre>
      */
-    public int getAllowDiffShort();
+    int getAllowDiffShort();
 
     /**
      * use temporal masking effect (default = 1)
      *
      * <pre>int CDECL lame_set_useTemporal(lame_global_flags *, int);</pre>
      */
-    public void setUseTemporal(boolean maskEffect);
-
+    void setUseTemporal(boolean maskEffect);
 
     /**
      * use temporal masking effect (default = 1)
      *
      * <pre>int CDECL lame_get_useTemporal(const lame_global_flags *);</pre>
      */
-    public boolean isUseTemporal();
+    boolean isUseTemporal();
 
     /**
      * use temporal masking effect (default = 1)
      *
      * <pre>int CDECL lame_set_interChRatio(lame_global_flags *, float);</pre>
      */
-    public void setInterChRatio(float interChRatio);
+    void setInterChRatio(float interChRatio);
 
     /**
      * use temporal masking effect (default = 1)
      *
      * <pre>float CDECL lame_get_interChRatio(const lame_global_flags *);</pre>
      */
-    public float getInterChRatio();
+    float getInterChRatio();
 
     /**
      * disable short blocks
      *
      * <pre>int CDECL lame_set_no_short_blocks(lame_global_flags *, int);</pre>
      */
-    public void setNoShortBlocks(boolean noShort);
+    void setNoShortBlocks(boolean noShort);
 
     /**
      * disable short blocks
      *
      * <pre>int CDECL lame_get_no_short_blocks(const lame_global_flags *);</pre>
      */
-    public boolean isNoShortBlocks();
+    boolean isNoShortBlocks();
 
     /**
      * force short blocks
      *
      * <pre>int CDECL lame_set_force_short_blocks(lame_global_flags *, int);</pre>
      */
-    public void setForceShortBlocks(boolean force);
+    void setForceShortBlocks(boolean force);
 
     /**
      * force short blocks
      *
      * <pre>int CDECL lame_get_force_short_blocks(const lame_global_flags *);</pre>
      */
-    public boolean isForceShortBlocks();
+    boolean isForceShortBlocks();
 
     /**
      * Input PCM is emphased PCM (for instance from one of the rarely
@@ -1077,7 +1065,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_set_emphasis(lame_global_flags *, int);</pre>
      */
-    public void setEmphasis(boolean emph);
+    void setEmphasis(boolean emph);
 
     /**
      * Input PCM is emphased PCM (for instance from one of the rarely
@@ -1087,22 +1075,21 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_emphasis(const lame_global_flags *);</pre>
      */
-    public boolean isEmphasis();
+    boolean isEmphasis();
 
     /**
      * version  0=MPEG-2  1=MPEG-1  (2=MPEG-2.5)
      *
      * <pre>int CDECL lame_get_version(const lame_global_flags *);</pre>
      */
-    public int getVersion();
-
+    int getVersion();
 
     /**
      * encoder delay
      *
      * <pre>int CDECL lame_get_encoder_delay(const lame_global_flags *);</pre>
      */
-    public int getEncoderDelay();
+    int getEncoderDelay();
 
     /**
      * padding appended to the input to make sure decoder can fully decode
@@ -1112,22 +1099,21 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_encoder_padding(const lame_global_flags *);  </pre>
      */
-    public int getEncoderPadding();
-
+    int getEncoderPadding();
 
     /**
      * size of MPEG frame
      *
      * <pre>int CDECL lame_get_framesize(const lame_global_flags *);</pre>
      */
-    public int getFramesize();
+    int getFramesize();
 
     /**
      * number of PCM samples buffered, but not yet encoded to mp3 data.
      *
      * <pre>int CDECL lame_get_mf_samples_to_encode( const lame_global_flags*  gfp );</pre>
      */
-    public int getMfSamplesToEncode();
+    int getMfSamplesToEncode();
 
     /**
      * size (bytes) of mp3 data buffered, but not yet encoded.
@@ -1138,14 +1124,14 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_size_mp3buffer( const lame_global_flags*  gfp );</pre>
      */
-    public int getSizeMP3buffer();
+    int getSizeMP3buffer();
 
     /**
      * number of frames encoded so far
      *
      * <pre>int CDECL lame_get_frameNum(const lame_global_flags *);</pre>
      */
-    public int getFrameNum();
+    int getFrameNum();
 
     /**
      * lame's estimate of the total number of frames to be encoded
@@ -1153,28 +1139,28 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_totalframes(const lame_global_flags *);</pre>
      */
-    public int getTotalframes();
+    int getTotalframes();
 
     /**
      * RadioGain value. Multiplied by 10 and rounded to the nearest.
      *
      * <pre>int CDECL lame_get_RadioGain(const lame_global_flags *);</pre>
      */
-    public int getRadioGain();
+    int getRadioGain();
 
     /**
      * AudiophileGain value. Multipled by 10 and rounded to the nearest.
      *
      * <pre>int CDECL lame_get_AudiophileGain(const lame_global_flags *);</pre>
      */
-    public int getAudiophileGain();
+    int getAudiophileGain();
 
     /**
      * the peak sample
      *
      * <pre>float CDECL lame_get_PeakSample(const lame_global_flags *);</pre>
      */
-    public float getPeakSample();
+    float getPeakSample();
 
     /**
      * Gain change required for preventing clipping. The value is correct only if
@@ -1183,7 +1169,7 @@ public interface LameConfig {
      *
      * <pre>int CDECL lame_get_noclipGainChange(const lame_global_flags *);</pre>
      */
-    public int getNoclipGainChange();
+    int getNoclipGainChange();
 
     /**
      * user-specified scale factor required for preventing clipping. Value is
@@ -1193,7 +1179,7 @@ public interface LameConfig {
      *
      * <pre>float CDECL lame_get_noclipScale(const lame_global_flags *);</pre>
      */
-    public float getNoclipScale();
+    float getNoclipScale();
 
     /**
      * OPTIONAL:
@@ -1202,27 +1188,27 @@ public interface LameConfig {
      *
      * <pre>const char*  CDECL get_lame_version( void );</pre>
      */
-    public String getLameVersion();
+    String getLameVersion();
 
     /**
      * <pre>const char*  CDECL get_lame_short_version( void );</pre>
      */
-    public String getLameShortVersion();
+    String getLameShortVersion();
 
     /**
      * <pre>const char*  CDECL get_lame_very_short_version( void );</pre>
      */
-    public String getLameVeryShortVersion();
+    String getLameVeryShortVersion();
 
     /**
      * <pre>const char*  CDECL get_psy_version( void );</pre>
      */
-    public String getPsyVersion();
+    String getPsyVersion();
 
     /**
      * <pre>const char*  CDECL get_lame_url( void );</pre>
      */
-    public String getLameUrl();
+    String getLameUrl();
 
     /*
      * OPTIONAL:
@@ -1230,7 +1216,7 @@ public interface LameConfig {
      *
      * <pre>void CDECL get_lame_version_numerical ( lame_version_t *const );</pre>
      */
-    public void getLameVersionNumerical(LameVersion version);
+    void getLameVersionNumerical(LameVersion version);
 
     /*
      * OPTIONAL:
@@ -1238,12 +1224,12 @@ public interface LameConfig {
      *
      * <pre>void CDECL lame_print_config(const lame_global_flags*  gfp);</pre>
      */
-    public void printConfig();
+    void printConfig();
 
     /**
      * <pre>void CDECL lame_print_internals( const lame_global_flags *gfp);</pre>
      */
-    public void printInternals();
+    void printInternals();
 
     /*
      * OPTIONAL:    some simple statistics
@@ -1260,11 +1246,11 @@ public interface LameConfig {
      *
      * <pre>
      *    void CDECL lame_bitrate_hist( 
-                const lame_global_flags *const gfp, 
-                int   bitrate_count[14] );
+     *           const lame_global_flags *const gfp,
+     *           int   bitrate_count[14] );
      * </pre>
      */
-    public void bitrateHist(int[] bitrate_count);
+    void bitrateHist(int[] bitrate_count);
 
     /**
      * See {@link #bitrateHist(int[])}
@@ -1275,7 +1261,7 @@ public interface LameConfig {
      * int bitrate_kbps [14] );
      * </pre>
      */
-    public void bitrateKbps(int[] bitrate_kbps);
+    void bitrateKbps(int[] bitrate_kbps);
 
     /**
      * See {@link #bitrateHist(int[])}
@@ -1286,7 +1272,7 @@ public interface LameConfig {
      * int stereo_mode_count[4] );
      * </pre>
      */
-    public void stereoModeHist(int[] stereo_mode_count);
+    void stereoModeHist(int[] stereo_mode_count);
 
     /**
      * See {@link #bitrateHist(int[])}
@@ -1297,7 +1283,7 @@ public interface LameConfig {
      * int  bitrate_stmode_count [14] [4] );
      * </pre>
      */
-    public void bitrateStereoModeHist(int[][] bitrate_stmode_count);
+    void bitrateStereoModeHist(int[][] bitrate_stmode_count);
 
     /**
      * See {@link #bitrateHist(int[])}
@@ -1308,7 +1294,7 @@ public interface LameConfig {
      * int btype_count[6] );
      * </pre>
      */
-    public void blockTypeHist(int[] btype_count);
+    void blockTypeHist(int[] btype_count);
 
     /**
      * See {@link #bitrateHist(int[])}
@@ -1319,5 +1305,5 @@ public interface LameConfig {
      * int bitrate_btype_count[14][6] );
      * </pre>
      */
-    public void bitrateBlockTypeHist(int[][] bitrate_btype_count);
+    void bitrateBlockTypeHist(int[][] bitrate_btype_count);
 }

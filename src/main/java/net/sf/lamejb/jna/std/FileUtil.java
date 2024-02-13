@@ -35,8 +35,7 @@ import com.sun.jna.Pointer;
  */
 public interface FileUtil extends Library {
 
-    FileUtil INSTANCE =
-            (FileUtil) Native.loadLibrary((Platform.isWindows() ? "msvcrt" : "c"), FileUtil.class);
+    FileUtil INSTANCE = Native.load((Platform.isWindows() ? "msvcrt" : "c"), FileUtil.class);
 
     /**
      * <pre>FILE *fopen(const char *filename, const char *mode); </pre>
@@ -47,6 +46,5 @@ public interface FileUtil extends Library {
      * <pre>int fclose(FILE *stream);</pre>
      */
     int fclose(Pointer stream);
-
 }
 

@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Structure;
 
 
@@ -80,7 +79,6 @@ public class BE_VERSION extends Structure {
     public byte byMMXEnabled;
     public byte[] btReserved = new byte[125]; // embedded    
 
-
     /**
      * Returns the <code>zHomepage</code> attribute as a String.
      *
@@ -89,11 +87,10 @@ public class BE_VERSION extends Structure {
     public String getZHomepageAsString() {
         byte[] url = zHomepage;
         String res = "";
-        for (int i = 0; i < url.length; i++) {
-            if (url[i] == 0) break;
-            res += (char) url[i];
+        for (byte b : url) {
+            if (b == 0) break;
+            res += (char) b;
         }
         return res;
     }
-
 }

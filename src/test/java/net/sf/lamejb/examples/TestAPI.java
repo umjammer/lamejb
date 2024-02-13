@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.examples;
 
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -169,7 +168,6 @@ public class TestAPI {
         //Test.checkFiles(mp3File,mp3RefFile,false);
     }
 
-
     public void testOOPAPIStreamEncoder(String wavFile, String mp3File) throws Exception {
         new File(mp3File).delete();
 
@@ -193,7 +191,6 @@ public class TestAPI {
 
         // Test.checkFiles(mp3File,mp3RefFile,false);        
     }
-
 
     public void testOOPAPIStreamEncoderProgressive(String wavFile, String mp3File) throws Exception {
         new File(mp3File).delete();
@@ -299,11 +296,8 @@ public class TestAPI {
         // Test.checkFiles(mp3File,mp3RefFile,false);
     }
 
-
     public static void checkError(int err) {
         if (err != LameErrorcodes.LAME_OKAY)
             throw new RuntimeException("ERROR " + err);
     }
-
-
 }

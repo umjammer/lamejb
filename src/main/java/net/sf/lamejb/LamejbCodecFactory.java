@@ -35,6 +35,5 @@ public interface LamejbCodecFactory {
      *
      * @return the newly created codec
      */
-    public LamejbCodec createCodec();
-
+    LamejbCodec createCodec();
 }

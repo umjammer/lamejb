@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Structure;
 
 
@@ -104,7 +103,6 @@ import com.sun.jna.Structure;
  * } BE_CONFIG, *BE_CONFIG ATTRIBUTE_PACKED;
  * </pre></code>
  */
-
 public class BE_CONFIG extends Structure {
 
     public int dwConfig;

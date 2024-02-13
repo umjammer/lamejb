@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Structure;
 
 

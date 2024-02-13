@@ -50,5 +50,4 @@ public class VBRMETHOD {
     public static final int VBR_METHOD_NEW = 2;
     public static final int VBR_METHOD_MTR = 3;
     public static final int VBR_METHOD_ABR = 4;
-
 }

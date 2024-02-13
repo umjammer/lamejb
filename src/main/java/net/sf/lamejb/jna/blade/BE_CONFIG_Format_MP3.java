@@ -24,15 +24,17 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Structure;
 
 
 public class BE_CONFIG_Format_MP3 extends Structure {
 
-    public int dwSampleRate;        // 48000, 44100 and 32000 allowed
-    public byte byMode;            // BE_MP3_MODE_STEREO, BE_MP3_MODE_DUALCHANNEL, BE_MP3_MODE_MONO
-    public short wBitrate;        // 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256 and 320 allowed
+    /** 48000, 44100 and 32000 allowed */
+    public int dwSampleRate;
+    /** BE_MP3_MODE_STEREO, BE_MP3_MODE_DUALCHANNEL, BE_MP3_MODE_MONO */
+    public byte byMode;
+    /** 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256 and 320 allowed */
+    public short wBitrate;
     public boolean bPrivate;
     public boolean bCRC;
     public boolean bCopyright;

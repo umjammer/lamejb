@@ -99,5 +99,4 @@ public class LAME_QUALITY_PRESET {
     public static final int LQP_HIFI = 8000;
     public static final int LQP_CD = 9000;
     public static final int LQP_STUDIO = 10000;
-
 }

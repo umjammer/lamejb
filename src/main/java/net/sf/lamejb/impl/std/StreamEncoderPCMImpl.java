@@ -40,6 +40,7 @@ public class StreamEncoderPCMImpl extends StreamEncoderImpl {
         super(input);
     }
 
+    @Override
     public void parseHeader() {
         // Nothing to do, there is no header in a raw pcm file/stream
     }

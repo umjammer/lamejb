@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.blade;
 
-
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -41,8 +40,7 @@ public interface BladeEnc {
      *
      * @return the version object containing the LAME info.
      */
-    public BE_VERSION getVersion();
-
+    BE_VERSION getVersion();
 
     /**
      * Creates (initializes) a new LAME encoding stream.
@@ -54,7 +52,7 @@ public interface BladeEnc {
      * @param beConfig the encoding configuration object used to create the stream.
      * @return a new opened encoding stream.
      */
-    public BeStream initStream(BE_CONFIG beConfig);
+    BeStream initStream(BE_CONFIG beConfig);
 
     /**
      * Encodes the input WAV file and writes the MP3 output to the specified file.
@@ -67,8 +65,7 @@ public interface BladeEnc {
      * @param beConfig the encoding configuration info used.
      * @see #encode(InputStream, OutputStream, BE_CONFIG, boolean)
      */
-    public void encode(String wavFile, String mp3File, BE_CONFIG beConfig);
-
+    void encode(String wavFile, String mp3File, BE_CONFIG beConfig);
 
     /**
      * Encodes the input stream and writes the MP3 output to the specified output stream.
@@ -83,7 +80,5 @@ public interface BladeEnc {
      * @param beConfig  the encoding configuration info used.
      * @param isWav     if the input stream has a WAV header.
      */
-    public void encode(InputStream input, OutputStream mp3Output, BE_CONFIG beConfig, boolean isWav);
-
-
+    void encode(InputStream input, OutputStream mp3Output, BE_CONFIG beConfig, boolean isWav);
 }

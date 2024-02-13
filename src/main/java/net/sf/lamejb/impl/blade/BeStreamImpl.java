@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.impl.blade;
 
-
 import com.sun.jna.NativeLong;
 import com.sun.jna.ptr.IntByReference;
 import net.sf.lamejb.LamejbException;
@@ -47,6 +46,7 @@ public class BeStreamImpl implements BeStream {
         this.outputBufferSize = outputBufferSize;
     }
 
+    @Override
     protected void finalize() {
         if (hbeStream.longValue() != 0)
             close();
@@ -57,22 +57,27 @@ public class BeStreamImpl implements BeStream {
             throw new LamejbException("Stream is closed");
     }
 
+    @Override
     public NativeLong getHandle() {
         return hbeStream;
     }
 
+    @Override
     public int getNSamples() {
         return nSamples;
     }
 
+    @Override
     public int getOutputBufferSize() {
         return outputBufferSize;
     }
 
+    @Override
     public boolean isOpen() {
         return hbeStream.longValue() != 0;
     }
 
+    @Override
     public void close() {
         checkStreamOpen();
         NativeLong err = BladeMP3Enc.INSTANCE.beCloseStream(hbeStream);
@@ -80,6 +85,7 @@ public class BeStreamImpl implements BeStream {
         this.hbeStream.setValue(0L);
     }
 
+    @Override
     public int deinitStream(byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
@@ -88,6 +94,7 @@ public class BeStreamImpl implements BeStream {
         return pdwOutput.getValue();
     }
 
+    @Override
     public int encodeChunk(int nSamples, short[] pSamples, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
@@ -97,6 +104,7 @@ public class BeStreamImpl implements BeStream {
         return pdwOutput.getValue();
     }
 
+    @Override
     public int encodeChunk(int nSamples, byte[] pSamples, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
@@ -106,6 +114,7 @@ public class BeStreamImpl implements BeStream {
         return pdwOutput.getValue();
     }
 
+    @Override
     public int encodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l, float[] buffer_r, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
@@ -115,6 +124,7 @@ public class BeStreamImpl implements BeStream {
         return pdwOutput.getValue();
     }
 
+    @Override
     public int flushNoGap(NativeLong hbeStream, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
@@ -122,6 +132,4 @@ public class BeStreamImpl implements BeStream {
         BladeUtil.checkError(err);
         return pdwOutput.getValue();
     }
-
-
 }

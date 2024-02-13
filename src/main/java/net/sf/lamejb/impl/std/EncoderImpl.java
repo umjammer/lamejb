@@ -45,17 +45,18 @@ public abstract class EncoderImpl implements Encoder {
     protected boolean encodingTaskInProcess = false;
     protected LameConfigImpl config = new LameConfigImpl(this);
 
-
     public EncoderImpl() {
         //this.std = std;      
 
         this.flags = Lame.INSTANCE.lame_init();
     }
 
+    @Override
     public LameConfig getLameConfig() {
         return config;
     }
 
+    @Override
     public LameGlobalFlags getLameFlags() {
         if (closed)
             throw new LamejbException("Encoder is closed"); // flags is not valid
@@ -67,10 +68,12 @@ public abstract class EncoderImpl implements Encoder {
         return encodingTaskInProcess;
     }
 
+    @Override
     public boolean isClosed() {
         return closed;
     }
 
+    @Override
     public void close() {
         if (closed) return;
 
@@ -79,7 +82,6 @@ public abstract class EncoderImpl implements Encoder {
 
         closed = true;
     }
-
 
     public void initEncodingTask() {
         if (closed) throw new LamejbException("This encoder is closed, create a new one");
@@ -141,6 +143,7 @@ public abstract class EncoderImpl implements Encoder {
         return Lame.INSTANCE.lame_encode_flush_nogap(flags, pMP3Buffer, 0);
     }
 
+    @Override
     public void writeVbrTag(String mp3File) {
         if (closed) throw new LamejbException("This encoder is closed, create a new one");
 
@@ -158,6 +161,4 @@ public abstract class EncoderImpl implements Encoder {
             FileUtil.INSTANCE.fclose(fpStream);
         }
     }
-
-
 }

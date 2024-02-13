@@ -30,10 +30,9 @@ package net.sf.lamejb;
  */
 public class LameCodecFactory implements LamejbCodecFactory {
 
+    @Override
     public LamejbCodec createCodec() {
         System.out.println("Using lame codec");
         return new LameCodec();
     }
-
-
 }

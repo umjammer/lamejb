@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.examples;
 
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -40,6 +39,7 @@ import net.sf.lamejb.jna.blade.BE_CONFIG;
 import net.sf.lamejb.jna.blade.BE_CONFIG_Format_LHV1;
 import net.sf.lamejb.jna.blade.BE_VERSION;
 import net.sf.lamejb.jna.blade.BladeMP3Enc;
+import net.sf.lamejb.jna.blade.LAME_QUALITY_PRESET;
 
 
 public class TestBladeAPI {
@@ -64,7 +64,7 @@ public class TestBladeAPI {
         beConfig.format.lhv1.dwReSampleRate = 0; // NO RESAMPLE       
         beConfig.format.lhv1.nMode = BladeMP3Enc.BE_MP3_MODE_JSTEREO;
         beConfig.format.lhv1.dwBitrate = 128;
-        //beConfig.getFormat().getLHV1().setNPreset(LAME_QUALITY_PRESET.LQP_R3MIX);      
+//        beConfig.format.lhv1.nPreset = LAME_QUALITY_PRESET.LQP_R3MIX;
         beConfig.format.lhv1.dwMpegVersion = BladeMP3Enc.MPEG1;
         beConfig.format.lhv1.dwPsyModel = 0; //  USE DEFAULT PSYCHOACOUSTIC MODEL     
         beConfig.format.lhv1.dwEmphasis = 0; // NO EMPHASIS TURNED ON
@@ -134,7 +134,6 @@ public class TestBladeAPI {
         // Test.checkFiles(mp3File,mp3RefFile,false);        
     }
 
-
     public void testOOPAPI(String wavFile, String mp3File) throws Exception {
         // Based in the LAME example : Dll/Example.cpp           
 
@@ -169,10 +168,8 @@ public class TestBladeAPI {
         // Test.checkFiles(mp3File,mp3RefFile,false);        
     }
 
-
     public static void checkError(NativeLong err) {
         if (err.intValue() != BladeMP3Enc.BE_ERR_SUCCESSFUL)
             throw new RuntimeException("ERROR " + err);
     }
-
 }

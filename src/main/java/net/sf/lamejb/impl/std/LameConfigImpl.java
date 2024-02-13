@@ -38,7 +38,6 @@ public class LameConfigImpl implements LameConfig {
 
     protected EncoderImpl encoder;
 
-
     public LameConfigImpl(EncoderImpl encoder) {
         this.encoder = encoder;
     }
@@ -51,6 +50,7 @@ public class LameConfigImpl implements LameConfig {
         return (value == 0 ? false : true);
     }
 
+    @Override
     public LameGlobalFlags getLameFlags() {
         return encoder.getLameFlags();
     }
@@ -75,6 +75,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_num_samples(lame_global_flags *, unsigned long);</pre>
      */
+    @Override
     public void setNumSamples(int samples) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_num_samples(flags, samples);
@@ -86,6 +87,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>unsigned long CDECL lame_get_num_samples(const lame_global_flags *);</pre>
      */
+    @Override
     public int getNumSamples() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_num_samples(flags);
@@ -96,6 +98,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_in_samplerate(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setInSamplerate(int rate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_in_samplerate(flags, rate);
@@ -107,6 +110,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_in_samplerate(const lame_global_flags *);</pre>
      */
+    @Override
     public int getInSamplerate() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_in_samplerate(flags);
@@ -117,6 +121,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_num_channels(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setNumChannels(int channels) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_num_channels(flags, channels);
@@ -128,6 +133,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_num_channels(const lame_global_flags *);</pre>
      */
+    @Override
     public int getNumChannels() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_num_channels(flags);
@@ -139,6 +145,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_scale(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setScale(float scale) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_scale(flags, scale);
@@ -151,11 +158,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_scale(const lame_global_flags *);</pre>
      */
+    @Override
     public float getScale() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_scale(flags);
     }
-
 
     /**
      * scale the channel 0 (left) input by this amount before encoding.
@@ -164,6 +171,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_scale_left(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setScaleLeft(float scale) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_scale_left(flags, scale);
@@ -177,6 +185,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_scale_left(const lame_global_flags *);</pre>
      */
+    @Override
     public float getScaleLeft() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_scale_left(flags);
@@ -189,6 +198,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_scale_right(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setScaleRight(float scale) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_scale_right(flags, scale);
@@ -202,11 +212,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_scale_right(const lame_global_flags *);</pre>
      */
+    @Override
     public float getScaleRight() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_scale_right(flags);
     }
-
 
     /**
      * output sample rate in Hz.  default = 0, which means Lame picks best value
@@ -218,6 +228,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_out_samplerate(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setOutSamplerate(int rate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_out_samplerate(flags, rate);
@@ -234,16 +245,17 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_out_samplerate(const lame_global_flags *);</pre>
      */
+    @Override
     public int getOutSamplerate() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_out_samplerate(flags);
     }
 
-
     /**
      * 1=cause Lame to collect data for an MP3 frame analyzer. default=0
      * <pre>int CDECL lame_set_analysis(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setAnalysis(boolean analysis) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_analysis(flags, toInt(analysis));
@@ -255,6 +267,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_analysis(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isAnalysis() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_analysis(flags));
@@ -267,6 +280,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_bWriteVbrTag(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setBWriteVbrTag(boolean vbrTag) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_bWriteVbrTag(flags, toInt(vbrTag));
@@ -281,6 +295,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_bWriteVbrTag(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isBWriteVbrTag() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_bWriteVbrTag(flags));
@@ -291,6 +306,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_decode_only(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setDecodeOnly(boolean deconly) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_decode_only(flags, toInt(deconly));
@@ -302,6 +318,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_decode_only(lame_global_flags *);</pre>
      */
+    @Override
     public boolean isDecodeOnly() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_decode_only(flags));
@@ -313,6 +330,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ogg(lame_global_flags*, int);</pre>
      */
+    @Override
     public void setOgg(boolean ogg) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ogg(flags, toInt(ogg));
@@ -325,6 +343,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ogg(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isOgg() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_ogg(flags));
@@ -332,7 +351,7 @@ public class LameConfigImpl implements LameConfig {
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -340,6 +359,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_quality(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setQuality(int quality) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_quality(flags, quality);
@@ -348,7 +368,7 @@ public class LameConfigImpl implements LameConfig {
 
     /**
      * internal algorithm selection.  True quality is determined by the bitrate
-     * but this variable will effect quality by selecting expensive or cheap algorithms.
+     * but this variable will affect quality by selecting expensive or cheap algorithms.
      * quality=0..9.  0=best (very slow).  9=worst.
      * recommended:  2     near-best quality, not too slow
      * 5     good quality, fast
@@ -356,6 +376,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_quality(const lame_global_flags *);</pre>
      */
+    @Override
     public int getQuality() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_quality(flags);
@@ -367,6 +388,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_mode(lame_global_flags *, MPEG_mode);</pre>
      */
+    @Override
     public void setMode(int mpeg_mode) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_mode(flags, mpeg_mode);
@@ -379,6 +401,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>MPEG_mode CDECL lame_get_mode(const lame_global_flags *);</pre>
      */
+    @Override
     public int getMode() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_mode(flags);
@@ -391,6 +414,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_mode_automs(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setModeAutoms(int mode) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_mode_automs(flags, mode);
@@ -404,6 +428,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_mode_automs(const lame_global_flags *);</pre>
      */
+    @Override
     public int getModeAutoms() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_mode_automs(flags);
@@ -415,6 +440,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_force_ms(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setForceMs(boolean force) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_force_ms(flags, toInt(force));
@@ -427,6 +453,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_force_ms(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isForceMs() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_force_ms(flags));
@@ -437,6 +464,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_free_format(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setFreeFormat(boolean free) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_free_format(flags, toInt(free));
@@ -448,17 +476,18 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_free_format(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isFreeFormat() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_free_format(flags));
     }
-
 
     /**
      * perform ReplayGain analysis?  default = 0 (disabled)
      *
      * <pre>int CDECL lame_set_findReplayGain(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setFindReplayGain(boolean repGain) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_findReplayGain(flags, toInt(repGain));
@@ -470,11 +499,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_findReplayGain(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isFindReplayGain() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_findReplayGain(flags));
     }
-
 
     /**
      * decode on the fly. Search for the peak sample. If the ReplayGain
@@ -484,6 +513,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_decode_on_the_fly(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setDecodeOnTheFly(boolean onthefly) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_decode_on_the_fly(flags, toInt(onthefly));
@@ -498,11 +528,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_decode_on_the_fly(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isDecodeOnTheFly() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_decode_on_the_fly(flags));
     }
-
 
     /**
      * DEPRECATED: now does the same as lame_set_findReplayGain()
@@ -510,6 +540,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ReplayGain_input(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setReplayGainInput(boolean repGain) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ReplayGain_input(flags, toInt(repGain));
@@ -522,6 +553,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ReplayGain_input(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isReplayGainInput() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_ReplayGain_input(flags));
@@ -534,6 +566,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ReplayGain_decode(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setReplayGainDecode(boolean repGain) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ReplayGain_decode(flags, toInt(repGain));
@@ -547,6 +580,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ReplayGain_decode(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isReplayGainDecode() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_ReplayGain_decode(flags));
@@ -558,6 +592,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_findPeakSample(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setFindPeakSample(boolean findPeak) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_findPeakSample(flags, toInt(findPeak));
@@ -570,6 +605,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_findPeakSample(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isFindPeakSample() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_findPeakSample(flags));
@@ -580,6 +616,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_nogap_total(lame_global_flags*, int);</pre>
      */
+    @Override
     public void setNogapTotal(int total) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_nogap_total(flags, total);
@@ -591,6 +628,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_nogap_total(const lame_global_flags*);</pre>
      */
+    @Override
     public int getNogapTotal() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_nogap_total(flags);
@@ -601,6 +639,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_nogap_currentindex(lame_global_flags* , int);</pre>
      */
+    @Override
     public void setNogapCurrentIndex(int currindex) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_nogap_currentindex(flags, currindex);
@@ -612,6 +651,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_nogap_currentindex(const lame_global_flags*);</pre>
      */
+    @Override
     public int getNogapCurrentindex() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_nogap_currentindex(flags);
@@ -633,6 +673,7 @@ public class LameConfigImpl implements LameConfig {
      * <pre>int CDECL lame_set_errorf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
+    @Override
     public void setErrorf(Lame.LameMsgCallback func) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_errorf(flags, func);
@@ -655,12 +696,12 @@ public class LameConfigImpl implements LameConfig {
      * <pre>int CDECL lame_set_debugf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
+    @Override
     public void setDebugf(Lame.LameMsgCallback func) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_debugf(flags, func);
         checkError(rc);
     }
-
 
     /**
      * OPTIONAL:
@@ -678,6 +719,7 @@ public class LameConfigImpl implements LameConfig {
      * <pre>int CDECL lame_set_msgf(lame_global_flags *,
      * void (*func)(const char *, va_list));</pre>
      */
+    @Override
     public void setMsgf(Lame.LameMsgCallback func) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_msgf(flags, func);
@@ -689,6 +731,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_brate(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setBrate(int brate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_brate(flags, brate);
@@ -700,6 +743,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_brate(const lame_global_flags *);
      */
+    @Override
     public int getBrate() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_brate(flags);
@@ -708,6 +752,7 @@ public class LameConfigImpl implements LameConfig {
     /*
      * <pre>int CDECL lame_set_compression_ratio(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setCompressionRatio(float ratio) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_compression_ratio(flags, ratio);
@@ -717,6 +762,7 @@ public class LameConfigImpl implements LameConfig {
     /*
      * <pre>float CDECL lame_get_compression_ratio(const lame_global_flags *);</pre>
      */
+    @Override
     public float getCompressionRatio() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_compression_ratio(flags);
@@ -725,6 +771,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_set_preset( lame_global_flags*  gfp, int );</pre>
      */
+    @Override
     public void setPreset(int preset) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_preset(flags, preset);
@@ -734,6 +781,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_set_asm_optimizations( lame_global_flags*  gfp, int, int );</pre>
      */
+    @Override
     public void setAsmOptimizations(int param1, int param2) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_asm_optimizations(flags, param1, param2);
@@ -745,6 +793,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_copyright(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setCopyright(boolean cprght) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_copyright(flags, toInt(cprght));
@@ -756,6 +805,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_copyright(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isCopyright() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_copyright(flags));
@@ -766,6 +816,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_original(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setOriginal(boolean original) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_original(flags, toInt(original));
@@ -777,6 +828,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_original(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isOriginal() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_original(flags));
@@ -787,6 +839,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_error_protection(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setErrorProtection(boolean prot) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_error_protection(flags, toInt(prot));
@@ -798,6 +851,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_error_protection(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isErrorProtection() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_error_protection(flags));
@@ -808,6 +862,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_padding_type(lame_global_flags *, Padding_type);</pre>
      */
+    @Override
     public void setPaddingType(int padding_type) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_padding_type(flags, padding_type);
@@ -819,6 +874,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>Padding_type CDECL lame_get_padding_type(const lame_global_flags *);</pre>
      */
+    @Override
     public int getPaddingType() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_padding_type(flags);
@@ -829,6 +885,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_extension(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setExtension(int ext) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_extension(flags, ext);
@@ -840,6 +897,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_extension(const lame_global_flags *); </pre>
      */
+    @Override
     public int getExtension() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_extension(flags);
@@ -850,6 +908,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_strict_ISO(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setStrictISO(boolean iso) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_strict_ISO(flags, toInt(iso));
@@ -861,6 +920,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_strict_ISO(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isStrictISO() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_strict_ISO(flags));
@@ -871,6 +931,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_disable_reservoir(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setDisableReservoir(boolean preset) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_disable_reservoir(flags, toInt(preset));
@@ -882,6 +943,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_disable_reservoir(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isDisableReservoir() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_disable_reservoir(flags));
@@ -892,6 +954,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_quant_comp(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setQuantComp(int quant) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_quant_comp(flags, quant);
@@ -903,6 +966,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_quant_comp(const lame_global_flags *);</pre>
      */
+    @Override
     public int getQuantComp() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_quant_comp(flags);
@@ -913,6 +977,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_quant_comp_short(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setQuantCompShort(int quant) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_quant_comp_short(flags, quant);
@@ -924,6 +989,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_quant_comp_short(const lame_global_flags *);</pre>
      */
+    @Override
     public int getQuantCompShort() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_quant_comp_short(flags);
@@ -932,6 +998,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_set_experimentalX(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setExperimentalX(int x) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_experimentalX(flags, x);
@@ -941,6 +1008,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_get_experimentalX(const lame_global_flags *);</pre>
      */
+    @Override
     public int getExperimentalX() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_experimentalX(flags);
@@ -951,6 +1019,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_experimentalY(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setExperimentalY(int y) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_experimentalY(flags, y);
@@ -962,6 +1031,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_experimentalY(const lame_global_flags *);</pre>
      */
+    @Override
     public int getExperimentalY() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_experimentalY(flags);
@@ -972,6 +1042,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_experimentalZ(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setExperimentalZ(int z) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_experimentalZ(flags, z);
@@ -983,25 +1054,30 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_experimentalZ(const lame_global_flags *);</pre>
      */
+    @Override
     public int getExperimentalZ() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_experimentalZ(flags);
     }
 
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
+    /**
+     * Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_set_exp_nspsytune(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setExpNspsytune(int tune) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_exp_nspsytune(flags, tune);
         checkError(rc);
     }
 
-    /* Naoki's psycho acoustic model.  default=0 
-     
-      <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
+    /**
+     * Naoki's psycho acoustic model.  default=0
+     *
+     * <pre>int CDECL lame_get_exp_nspsytune(const lame_global_flags *);</pre>
      */
+    @Override
     public int getExpNspsytune() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_exp_nspsytune(flags);
@@ -1010,6 +1086,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>void CDECL lame_set_msfix(lame_global_flags *, double);</pre>
      */
+    @Override
     public void setMsfix(double msfix) {
         LameGlobalFlags flags = preSetCall();
         Lame.INSTANCE.lame_set_msfix(flags, msfix);
@@ -1018,6 +1095,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>float CDECL lame_get_msfix(const lame_global_flags *);</pre>
      */
+    @Override
     public float getMsfix() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_msfix(flags);
@@ -1026,6 +1104,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int lame_set_exp_nspsytune2_int( lame_global_flags*, int, int);</pre>
      */
+    @Override
     public int setExpNspsytune2Int(int p1, int p2) {
         LameGlobalFlags flags = preSetCall();
         return Lame.INSTANCE.lame_set_exp_nspsytune2_int(flags, p1, p2);
@@ -1034,6 +1113,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>float lame_set_exp_nspsytune2_real( lame_global_flags*, int, float);</pre>
      */
+    @Override
     public float setExpNspsytune2Real(int p1, float p2) {
         LameGlobalFlags flags = preSetCall();
         return Lame.INSTANCE.lame_set_exp_nspsytune2_real(flags, p1, p2);
@@ -1042,6 +1122,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>void * lame_set_exp_nspsytune2_pointer( lame_global_flags*, int, void *);</pre>
      */
+    @Override
     public int setExpNspsytune2Pointer(int p1, int p2) {
         LameGlobalFlags flags = preSetCall();
         return Lame.INSTANCE.lame_set_exp_nspsytune2_pointer(flags, p1, p2);
@@ -1052,6 +1133,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_VBR(lame_global_flags *, vbr_mode);</pre>
      */
+    @Override
     public void setVBR(int vbr_mode) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR(flags, vbr_mode);
@@ -1063,6 +1145,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>vbr_mode CDECL lame_get_VBR(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVBR() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_VBR(flags);
@@ -1073,6 +1156,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_VBR_q(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setVBRQ(int level) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR_q(flags, level);
@@ -1084,6 +1168,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_VBR_q(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVBRq() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_VBR_q(flags);
@@ -1094,6 +1179,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_VBR_mean_bitrate_kbps(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setVBRMeanBitrateKbps(int bitrate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR_mean_bitrate_kbps(flags, bitrate);
@@ -1105,6 +1191,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_VBR_mean_bitrate_kbps(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVBRMeanBitrateKbps() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_VBR_mean_bitrate_kbps(flags);
@@ -1113,6 +1200,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_set_VBR_min_bitrate_kbps(const lame_global_flags *);</pre>
      */
+    @Override
     public void setVBRMinBitrateKbps(int bitrate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR_min_bitrate_kbps(flags, bitrate);
@@ -1122,6 +1210,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_get_VBR_min_bitrate_kbps(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVBRMinBitrateKbps() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_VBR_min_bitrate_kbps(flags);
@@ -1130,6 +1219,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_set_VBR_max_bitrate_kbps(const lame_global_flags *);</pre>
      */
+    @Override
     public void setVBRMaxBitrateKbps(int bitrate) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR_max_bitrate_kbps(flags, bitrate);
@@ -1139,6 +1229,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>int CDECL lame_get_VBR_max_bitrate_kbps(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVBRMaxBitrateKbps() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_VBR_max_bitrate_kbps(flags);
@@ -1150,6 +1241,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_VBR_hard_min(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setVBRHardMin(boolean vbr) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_VBR_hard_min(flags, toInt(vbr));
@@ -1162,6 +1254,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_VBR_hard_min(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isVBRHardMin() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_VBR_hard_min(flags));
@@ -1172,6 +1265,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_preset_expopts(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setPresetExpopts(int expopts) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_preset_expopts(flags, expopts);
@@ -1183,6 +1277,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_lowpassfreq(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setLowpassfreq(int freq) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_lowpassfreq(flags, freq);
@@ -1194,6 +1289,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_lowpassfreq(const lame_global_flags *);</pre>
      */
+    @Override
     public int getLowpassfreq() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_lowpassfreq(flags);
@@ -1204,6 +1300,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_lowpasswidth(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setLowpasswidth(int width) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_lowpasswidth(flags, width);
@@ -1215,6 +1312,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_lowpasswidth(const lame_global_flags *);</pre>
      */
+    @Override
     public int getLowpasswidth() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_lowpasswidth(flags);
@@ -1225,6 +1323,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_highpassfreq(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setHighpassfreq(int freq) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_highpassfreq(flags, freq);
@@ -1236,6 +1335,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_highpassfreq(const lame_global_flags *);</pre>
      */
+    @Override
     public int getHighpassfreq() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_highpassfreq(flags);
@@ -1246,6 +1346,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_highpasswidth(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setHighpasswidth(int width) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_highpasswidth(flags, width);
@@ -1257,6 +1358,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_highpasswidth(const lame_global_flags *);</pre>
      */
+    @Override
     public int getHighpasswidth() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_highpasswidth(flags);
@@ -1267,6 +1369,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ATHonly(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setATHonly(boolean athOnly) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ATHonly(flags, toInt(athOnly));
@@ -1278,6 +1381,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ATHonly(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isATHonly() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_ATHonly(flags));
@@ -1288,6 +1392,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ATHshort(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setATHshort(boolean athShort) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ATHshort(flags, toInt(athShort));
@@ -1299,6 +1404,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ATHshort(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isATHshort() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_ATHshort(flags));
@@ -1309,6 +1415,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_noATH(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setNoATH(boolean noATH) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_noATH(flags, toInt(noATH));
@@ -1320,6 +1427,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_noATH(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isNoATH() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_noATH(flags));
@@ -1330,6 +1438,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ATHtype(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setATHtype(int ATHType) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ATHtype(flags, ATHType);
@@ -1341,6 +1450,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_ATHtype(lame_global_flags *);</pre>
      */
+    @Override
     public int getATHtype() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_ATHtype(flags);
@@ -1351,6 +1461,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_ATHlower(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setATHlower(float ATHLower) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_ATHlower(flags, ATHLower);
@@ -1362,6 +1473,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>floag CDECL lame_get_ATHlower(lame_global_flags *);</pre>
      */
+    @Override
     public float getATHlower() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_ATHlower(flags);
@@ -1372,6 +1484,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_athaa_type( lame_global_flags *, int);</pre>
      */
+    @Override
     public void setAthaaType(int ATHadjust) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_athaa_type(flags, ATHadjust);
@@ -1383,6 +1496,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_athaa_type( const lame_global_flags *);</pre>
      */
+    @Override
     public int getAthaaType() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_athaa_type(flags);
@@ -1393,6 +1507,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_athaa_loudapprox( lame_global_flags *, int);</pre>
      */
+    @Override
     public void setAthaaLoudapprox(int loud) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_athaa_loudapprox(flags, loud);
@@ -1404,6 +1519,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_athaa_loudapprox( const lame_global_flags *);</pre>
      */
+    @Override
     public int getAthaaLoudapprox() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_athaa_loudapprox(flags);
@@ -1414,6 +1530,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_athaa_sensitivity( lame_global_flags *, float);</pre>
      */
+    @Override
     public void setAthaaSensitivity(float sen) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_athaa_sensitivity(flags, sen);
@@ -1425,6 +1542,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_athaa_sensitivity( const lame_global_flags* );</pre>
      */
+    @Override
     public float getAthaaSensitivity() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_athaa_sensitivity(flags);
@@ -1435,6 +1553,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_cwlimit(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setCwlimit(int limit) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_cwlimit(flags, limit);
@@ -1446,6 +1565,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_cwlimit(const lame_global_flags *);</pre>
      */
+    @Override
     public int getCwlimit() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_cwlimit(flags);
@@ -1457,6 +1577,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_allow_diff_short(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setAllowDiffShort(int allow) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_allow_diff_short(flags, allow);
@@ -1469,6 +1590,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_allow_diff_short(const lame_global_flags *);</pre>
      */
+    @Override
     public int getAllowDiffShort() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_allow_diff_short(flags);
@@ -1479,18 +1601,19 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_useTemporal(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setUseTemporal(boolean maskEffect) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_useTemporal(flags, toInt(maskEffect));
         checkError(rc);
     }
 
-
     /**
      * use temporal masking effect (default = 1)
      *
      * <pre>int CDECL lame_get_useTemporal(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isUseTemporal() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_useTemporal(flags));
@@ -1501,6 +1624,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_interChRatio(lame_global_flags *, float);</pre>
      */
+    @Override
     public void setInterChRatio(float interChRatio) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_interChRatio(flags, interChRatio);
@@ -1512,6 +1636,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_interChRatio(const lame_global_flags *);</pre>
      */
+    @Override
     public float getInterChRatio() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_interChRatio(flags);
@@ -1522,6 +1647,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_no_short_blocks(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setNoShortBlocks(boolean noShort) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_no_short_blocks(flags, toInt(noShort));
@@ -1533,6 +1659,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_no_short_blocks(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isNoShortBlocks() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_no_short_blocks(flags));
@@ -1543,6 +1670,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_force_short_blocks(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setForceShortBlocks(boolean force) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_force_short_blocks(flags, toInt(force));
@@ -1554,6 +1682,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_force_short_blocks(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isForceShortBlocks() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_force_short_blocks(flags));
@@ -1567,6 +1696,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_set_emphasis(lame_global_flags *, int);</pre>
      */
+    @Override
     public void setEmphasis(boolean emph) {
         LameGlobalFlags flags = preSetCall();
         int rc = Lame.INSTANCE.lame_set_emphasis(flags, toInt(emph));
@@ -1581,6 +1711,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_emphasis(const lame_global_flags *);</pre>
      */
+    @Override
     public boolean isEmphasis() {
         LameGlobalFlags flags = preGetCall();
         return toBoolean(Lame.INSTANCE.lame_get_emphasis(flags));
@@ -1591,6 +1722,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_version(const lame_global_flags *);</pre>
      */
+    @Override
     public int getVersion() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_version(flags);
@@ -1601,6 +1733,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_encoder_delay(const lame_global_flags *);</pre>
      */
+    @Override
     public int getEncoderDelay() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_encoder_delay(flags);
@@ -1614,6 +1747,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_encoder_padding(const lame_global_flags *);  </pre>
      */
+    @Override
     public int getEncoderPadding() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_encoder_padding(flags);
@@ -1624,6 +1758,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_framesize(const lame_global_flags *);</pre>
      */
+    @Override
     public int getFramesize() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_framesize(flags);
@@ -1634,6 +1769,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_mf_samples_to_encode( const lame_global_flags*  gfp );</pre>
      */
+    @Override
     public int getMfSamplesToEncode() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_mf_samples_to_encode(flags);
@@ -1648,6 +1784,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_size_mp3buffer( const lame_global_flags*  gfp );</pre>
      */
+    @Override
     public int getSizeMP3buffer() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_size_mp3buffer(flags);
@@ -1658,6 +1795,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_frameNum(const lame_global_flags *);</pre>
      */
+    @Override
     public int getFrameNum() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_frameNum(flags);
@@ -1669,6 +1807,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_totalframes(const lame_global_flags *);</pre>
      */
+    @Override
     public int getTotalframes() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_totalframes(flags);
@@ -1679,6 +1818,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_RadioGain(const lame_global_flags *);</pre>
      */
+    @Override
     public int getRadioGain() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_RadioGain(flags);
@@ -1689,6 +1829,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_AudiophileGain(const lame_global_flags *);</pre>
      */
+    @Override
     public int getAudiophileGain() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_AudiophileGain(flags);
@@ -1699,6 +1840,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_PeakSample(const lame_global_flags *);</pre>
      */
+    @Override
     public float getPeakSample() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_PeakSample(flags);
@@ -1711,6 +1853,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>int CDECL lame_get_noclipGainChange(const lame_global_flags *);</pre>
      */
+    @Override
     public int getNoclipGainChange() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_noclipGainChange(flags);
@@ -1724,11 +1867,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>float CDECL lame_get_noclipScale(const lame_global_flags *);</pre>
      */
+    @Override
     public float getNoclipScale() {
         LameGlobalFlags flags = preGetCall();
         return Lame.INSTANCE.lame_get_noclipScale(flags);
     }
-
 
     /**
      * OPTIONAL:
@@ -1737,6 +1880,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>const char*  CDECL get_lame_version( void );</pre>
      */
+    @Override
     public String getLameVersion() {
         return Lame.INSTANCE.get_lame_version();
     }
@@ -1744,6 +1888,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>const char*  CDECL get_lame_short_version( void );</pre>
      */
+    @Override
     public String getLameShortVersion() {
         return Lame.INSTANCE.get_lame_short_version();
     }
@@ -1751,6 +1896,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>const char*  CDECL get_lame_very_short_version( void );</pre>
      */
+    @Override
     public String getLameVeryShortVersion() {
         return Lame.INSTANCE.get_lame_very_short_version();
     }
@@ -1758,6 +1904,7 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>const char*  CDECL get_psy_version( void );</pre>
      */
+    @Override
     public String getPsyVersion() {
         return Lame.INSTANCE.get_psy_version();
     }
@@ -1765,10 +1912,10 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>const char*  CDECL get_lame_url( void );</pre>
      */
+    @Override
     public String getLameUrl() {
         return Lame.INSTANCE.get_lame_url();
     }
-
 
     /*
      * OPTIONAL:
@@ -1776,6 +1923,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>void CDECL get_lame_version_numerical ( lame_version_t *const );</pre>
      */
+    @Override
     public void getLameVersionNumerical(LameVersion version) {
         Lame.INSTANCE.get_lame_version_numerical(version);
     }
@@ -1786,6 +1934,7 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>void CDECL lame_print_config(const lame_global_flags*  gfp);</pre>
      */
+    @Override
     public void printConfig() {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_print_config(flags);
@@ -1794,11 +1943,11 @@ public class LameConfigImpl implements LameConfig {
     /**
      * <pre>void CDECL lame_print_internals( const lame_global_flags *gfp);</pre>
      */
+    @Override
     public void printInternals() {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_print_internals(flags);
     }
-
 
     /*
      * OPTIONAL:    some simple statistics
@@ -1815,10 +1964,11 @@ public class LameConfigImpl implements LameConfig {
      *
      * <pre>
      *    void CDECL lame_bitrate_hist( 
-                const lame_global_flags *const gfp, 
-                int   bitrate_count[14] );
+     *           const lame_global_flags *const gfp,
+     *           int   bitrate_count[14] );
      * </pre>
      */
+    @Override
     public void bitrateHist(int[] bitrate_count) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_bitrate_hist(flags, bitrate_count);
@@ -1833,6 +1983,7 @@ public class LameConfigImpl implements LameConfig {
      * int bitrate_kbps [14] );
      * </pre>
      */
+    @Override
     public void bitrateKbps(int[] bitrate_kbps) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_bitrate_kbps(flags, bitrate_kbps);
@@ -1847,6 +1998,7 @@ public class LameConfigImpl implements LameConfig {
      * int stereo_mode_count[4] );
      * </pre>
      */
+    @Override
     public void stereoModeHist(int[] stereo_mode_count) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_stereo_mode_hist(flags, stereo_mode_count);
@@ -1861,6 +2013,7 @@ public class LameConfigImpl implements LameConfig {
      * int  bitrate_stmode_count [14] [4] );
      * </pre>
      */
+    @Override
     public void bitrateStereoModeHist(int[][] bitrate_stmode_count) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_bitrate_stereo_mode_hist(flags, bitrate_stmode_count);
@@ -1875,6 +2028,7 @@ public class LameConfigImpl implements LameConfig {
      * int btype_count[6] );
      * </pre>
      */
+    @Override
     public void blockTypeHist(int[] btype_count) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_block_type_hist(flags, btype_count);
@@ -1889,6 +2043,7 @@ public class LameConfigImpl implements LameConfig {
      * int bitrate_btype_count[14][6] );
      * </pre>
      */
+    @Override
     public void bitrateBlockTypeHist(int[][] bitrate_btype_count) {
         LameGlobalFlags flags = preGetCall();
         Lame.INSTANCE.lame_bitrate_block_type_hist(flags, bitrate_btype_count);

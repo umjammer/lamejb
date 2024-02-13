@@ -44,7 +44,7 @@ import net.sf.lamejb.jna.blade.BladeMP3Enc;
  */
 public class BladeCodec implements LamejbCodec {
 
-
+    @Override
     public void encodeFile(String inputFile, String outputFile, LamejbConfig config) {
         if (inputFile == null)
             throw new IllegalArgumentException("input file == null");
@@ -62,7 +62,7 @@ public class BladeCodec implements LamejbCodec {
         blade.encode(inputFile, outputFile, beConfig);
     }
 
-
+    @Override
     public OutputStream encodeStream(InputStream inputStream, OutputStream outputStream, LamejbConfig config) {
         if (inputStream == null)
             throw new IllegalArgumentException("input stream == null");
@@ -82,7 +82,6 @@ public class BladeCodec implements LamejbCodec {
 
         return outputStream;
     }
-
 
     private BE_CONFIG bladeInit(LamejbConfig config) {
         //System.out.println("LAME Version: " + version.byMajorVersion + "." + version.byMinorVersion);
@@ -106,9 +105,6 @@ public class BladeCodec implements LamejbCodec {
         //beConfig.format.lhv1.bOriginal = true;
         //beConfig.format.lhv1.bNoRes = true;
 
-
         return beConfig;
     }
-
-
 }

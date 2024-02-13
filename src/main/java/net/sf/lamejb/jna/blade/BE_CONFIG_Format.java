@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.jna.blade;
 
-
 import com.sun.jna.Union;
 
 
@@ -33,5 +32,4 @@ public class BE_CONFIG_Format extends Union {
     public BE_CONFIG_Format_MP3 mp3 = new BE_CONFIG_Format_MP3();
     public BE_CONFIG_Format_LHV1 lhv1 = new BE_CONFIG_Format_LHV1();
     public BE_CONFIG_Format_AAC aac = new BE_CONFIG_Format_AAC();
-
 }

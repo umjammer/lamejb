@@ -56,7 +56,7 @@ public interface GenericEncoder extends Encoder {
      * @param pcmBufferSize the one element array where the required PCM buffer size is saved.
      * @param mp3BufferSize the one element array where the required MP3 buffer size is saved.
      */
-    public void initEncoding(int[] pcmBufferSize, int[] mp3BufferSize);
+    void initEncoding(int[] pcmBufferSize, int[] mp3BufferSize);
 
     /**
      * Encodes a chunk of raw PCM data, if stereo source audio data must be interleaved.
@@ -69,7 +69,7 @@ public interface GenericEncoder extends Encoder {
      * @param mp3Buffer the MP3 buffer to fill with the encoded MP3 audio.
      * @return the number of bytes used to fill the MP3 buffer.
      */
-    public int encodeBuffer(byte[] pcmBuffer, int size, byte[] mp3Buffer);
+    int encodeBuffer(byte[] pcmBuffer, int size, byte[] mp3Buffer);
 
     /**
      * Finalizes the encoding task, any remainder MP3 data in the encoder is flushed
@@ -78,5 +78,5 @@ public interface GenericEncoder extends Encoder {
      * @param mp3Buffer the MP3 buffer to fill with the encoded MP3 audio.
      * @return the number of bytes used to fill the MP3 buffer.
      */
-    public int encodeFlush(byte[] mp3Buffer);
+    int encodeFlush(byte[] mp3Buffer);
 }

@@ -53,7 +53,7 @@ public interface StreamEncoder extends Encoder {
      *
      * @return the input stream.
      */
-    public InputStream getSourceInputStream();
+    InputStream getSourceInputStream();
 
     /**
      * Encodes the input source to MP3 saving to the specified file.
@@ -66,8 +66,7 @@ public interface StreamEncoder extends Encoder {
      *
      * @param mp3File the MP3 file path.
      */
-    public void encode(String mp3File);
-
+    void encode(String mp3File);
 
     /**
      * Encodes the input source to MP3 saving to the specified stream.
@@ -78,7 +77,7 @@ public interface StreamEncoder extends Encoder {
      * <p>VBR Info tag is not added, you can use the
      * method {@link Encoder#writeVbrTag(String)}</p>
      */
-    public void encode(OutputStream mp3Stream);
+    void encode(OutputStream mp3Stream);
 
     /**
      * Starts a progressive encoding process.
@@ -87,7 +86,7 @@ public interface StreamEncoder extends Encoder {
      *
      * @return pcmBufferSize the required MP3 buffer size.
      */
-    public int initEncoding();
+    int initEncoding();
 
     /**
      * Encodes a chunk of PCM data read from the input source.
@@ -98,6 +97,5 @@ public interface StreamEncoder extends Encoder {
      * @param mp3Buffer the MP3 buffer to fill with the encoded MP3 audio.
      * @return the number of bytes used to fill the MP3 buffer. If 0 the encoding process is finished.
      */
-    public int encodeBuffer(byte[] mp3Buffer);
-
+    int encodeBuffer(byte[] mp3Buffer);
 }

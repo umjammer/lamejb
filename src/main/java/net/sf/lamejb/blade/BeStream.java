@@ -42,7 +42,7 @@ public interface BeStream {
      *
      * @return the stream handle. If 0 the stream is closed.
      */
-    public NativeLong getHandle();
+    NativeLong getHandle();
 
     /**
      * Returns the maximum number of samples per encoding call.
@@ -53,7 +53,7 @@ public interface BeStream {
      * @return the stream handle.
      * @see #encodeChunk(int, short[], byte[])
      */
-    public int getNSamples();
+    int getNSamples();
 
     /**
      * Returns the maximum output buffer size per encoding call.
@@ -64,21 +64,21 @@ public interface BeStream {
      * @return the maximum output buffer size.
      * @see #encodeChunk(int, short[], byte[])
      */
-    public int getOutputBufferSize();
+    int getOutputBufferSize();
 
     /**
      * Returns true if the encoding stream is open.
      *
      * @return true if open.
      */
-    public boolean isOpen();
+    boolean isOpen();
 
     /**
      * Closes the stream, the instance must be discarded.
      * <br />
      * The method {@link net.sf.lamejb.jna.blade.BladeMP3Enc#beCloseStream(NativeLong)} is called.
      */
-    public void close();
+    void close();
 
     /**
      * Flushes to the output buffer the internal encoder data remaining.
@@ -89,7 +89,7 @@ public interface BeStream {
      * @param pOutput the output buffer receiving the remaining data.
      * @return the number of bytes written to the output buffer.
      */
-    public int deinitStream(byte[] pOutput);
+    int deinitStream(byte[] pOutput);
 
     /**
      * Encodes a chunk of audio samples, the output data is written to the output buffer.
@@ -102,7 +102,7 @@ public interface BeStream {
      * @param pOutput  the output buffer receiving the encoded data.
      * @return the number of bytes written to the output buffer.
      */
-    public int encodeChunk(int nSamples, short[] pSamples, byte[] pOutput);
+    int encodeChunk(int nSamples, short[] pSamples, byte[] pOutput);
 
     /**
      * Encodes a chunk of audio samples, the output data is written to the output buffer.
@@ -116,16 +116,15 @@ public interface BeStream {
      * @return the number of bytes written to the output buffer.
      * @see #encodeChunk(int, short[], byte[])
      */
-    public int encodeChunk(int nSamples, byte[] pSamples, byte[] pOutput);
+    int encodeChunk(int nSamples, byte[] pSamples, byte[] pOutput);
 
     /**
      * Undocumented method.
      */
-    public int encodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l, float[] buffer_r, byte[] pOutput);
+    int encodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l, float[] buffer_r, byte[] pOutput);
 
     /**
      * Undocumented method.
      */
-    public int flushNoGap(NativeLong hbeStream, byte[] pOutput);
-
+    int flushNoGap(NativeLong hbeStream, byte[] pOutput);
 }

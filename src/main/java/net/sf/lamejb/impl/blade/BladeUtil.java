@@ -24,7 +24,6 @@
 
 package net.sf.lamejb.impl.blade;
 
-
 import com.sun.jna.NativeLong;
 import net.sf.lamejb.LamejbException;
 import net.sf.lamejb.jna.blade.BladeMP3Enc;
@@ -47,7 +46,6 @@ public class BladeUtil {
         if (err.intValue() != BladeMP3Enc.BE_ERR_SUCCESSFUL)
             throw new LamejbException(BladeUtil.getErrorMessage(err), err.intValue());
     }
-
 
     /**
      * Returns a blade error message in human readable form
@@ -78,6 +76,4 @@ public class BladeUtil {
         }
         return msg;
     }
-
-
 }

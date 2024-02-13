@@ -52,32 +52,33 @@ public class LamejbConfig {
             return bladeMode;
         }
     }
-	
-	
-	/*
-	public enum MpegType {
-		MPEG1(0, 1),
-		MPEG2(1, 0);
-		
-		private final int lameType;   // for lame
-	    private final int bladeType; // for blade
-	    
-	    MpegType(int lameType, int bladeType) {
-	        this.lameType = lameType;
-	        this.bladeType = bladeType;
-	    }
-		
-	    public int lameType() { return lameType; }
-	    public int bladeType() { return bladeType; }
-	}
-	*/
+
+//    public enum MpegType {
+//        MPEG1(0, 1),
+//        MPEG2(1, 0);
+//
+//        private final int lameType;   // for lame
+//        private final int bladeType; // for blade
+//
+//        MpegType(int lameType, int bladeType) {
+//            this.lameType = lameType;
+//            this.bladeType = bladeType;
+//        }
+//
+//        public int lameType() {
+//            return lameType;
+//        }
+//
+//        public int bladeType() {
+//            return bladeType;
+//        }
+//    }
 
     private int sampleRate = 44100;
     private int bitRate = 128;
     private MpegMode mpegMode = MpegMode.JOINT_STEREO;
-    //private MpegType mpegType;
+//    private MpegType mpegType;
     private boolean vbrTag = true;
-
 
     public LamejbConfig() {
     }
@@ -89,7 +90,6 @@ public class LamejbConfig {
         this.mpegMode = mpegMode;
         this.vbrTag = vbrTag;
     }
-
 
     public int getSampleRate() {
         return sampleRate;
@@ -122,6 +122,4 @@ public class LamejbConfig {
     public void setVbrTag(boolean vbrTag) {
         this.vbrTag = vbrTag;
     }
-
-
 }
