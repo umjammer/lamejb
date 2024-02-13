@@ -39,8 +39,8 @@ TBD
 
 ## TODO
 
-* encoding parameter by properties
 * AudioFileWriter sample
+* ~~encoding parameter by properties~~
 
 ---
 

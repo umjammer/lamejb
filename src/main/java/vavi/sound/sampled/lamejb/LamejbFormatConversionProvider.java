@@ -295,15 +295,16 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
 
             encoder.getLameConfig().setNumChannels(targetFormat.getChannels());
             encoder.getLameConfig().setInSamplerate((int) targetFormat.getSampleRate());
-            // TODO parameter from properties
-            encoder.getLameConfig().setMode(1);
-//            encoder.getLameConfig().setVBR();
-//            encoder.getLameConfig().setVBRQ();
-            encoder.getLameConfig().setBrate(128);
-            encoder.getLameConfig().setQuality(5);
 
-            int[] pcmBufLen = new int[1]; int[] mp3BufLen = new int[1];
             this.format = targetFormat;
+            Map<String, Object> props = format.properties();
+            encoder.getLameConfig().setMode((int) props.getOrDefault("lamejb.mode", 1));
+            if (props.containsKey("lamejb.vbr")) {
+                encoder.getLameConfig().setVBR((int) props.get("lamejb.vbr"));
+                encoder.getLameConfig().setVBRQ((int) props.getOrDefault("lamejb.vbrq", 4));
+            }
+            encoder.getLameConfig().setBrate((int) props.getOrDefault("lamejb.brate", 128));
+            encoder.getLameConfig().setQuality((int) props.getOrDefault("lamejb.quality", 5));
             encoder.initEncoding(pcmBufLen, mp3BufLen);
             pcmBuffer = new byte[pcmBufLen[0]];
             encodedBuffer = new byte[mp3BufLen[0]];
