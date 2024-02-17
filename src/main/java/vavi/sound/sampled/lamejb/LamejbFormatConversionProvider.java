@@ -18,9 +18,10 @@ package vavi.sound.sampled.lamejb;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Objects;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -28,10 +29,11 @@ import javax.sound.sampled.AudioSystem;
 import net.sf.lamejb.impl.std.LameEncoderFactoryImpl;
 import net.sf.lamejb.std.GenericEncoder;
 import net.sf.lamejb.std.LameEncoderFactory;
-import org.tritonus.share.TDebug;
 import org.tritonus.share.sampled.AudioFormatSet;
 import org.tritonus.share.sampled.convert.TAsynchronousFilteredAudioInputStream;
 import org.tritonus.share.sampled.convert.TSimpleFormatConversionProvider;
+
+import static java.lang.System.getLogger;
 
 
 /**
@@ -45,6 +47,8 @@ import org.tritonus.share.sampled.convert.TSimpleFormatConversionProvider;
  * @author Florian Bomers
  */
 public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvider {
+
+    private static final Logger logger = getLogger("org.tritonus.TraceAudioConverter");
 
     private static final int ALL = AudioSystem.NOT_SPECIFIED;
 
@@ -195,17 +199,15 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
 
     @Override
     public AudioFormat[] getTargetFormats(AudioFormat.Encoding targetEncoding, AudioFormat sourceFormat) {
-        if (TDebug.TraceAudioConverter) {
-            TDebug.out(">MP3Lame getTargetFormats(AudioFormat.Encoding, AudioFormat):");
-            TDebug.out("checking out possible target formats");
-            TDebug.out("from: " + sourceFormat);
-            TDebug.out("to  : " + targetEncoding);
-        }
+        logger.log(Level.TRACE, ">MP3Lame getTargetFormats(AudioFormat.Encoding, AudioFormat):");
+        logger.log(Level.TRACE, "checking out possible target formats");
+        logger.log(Level.TRACE, "from: " + sourceFormat);
+        logger.log(Level.TRACE, "to  : " + targetEncoding);
         if (isConversionSupported(targetEncoding, sourceFormat)) {
             AudioFormatSet result = new AudioFormatSet();
             for (AudioFormat targetFormat : getCollectionTargetFormats()) {
 //                if (TDebug.TraceAudioConverter) {
-//                    TDebug.out("-checking target format " + targetFormat);
+//                    logger.log(Level.TRACE, "-checking target format " + targetFormat);
 //                }
                 if (doMatch(targetFormat.getSampleRate(),
                         sourceFormat.getSampleRate())
@@ -215,27 +217,27 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
                     targetFormat = getDefaultTargetFormat(targetFormat,
                             sourceFormat, true);
 //                    if (TDebug.TraceAudioConverter) {
-//                        TDebug.out("-yes. added " + targetFormat);
+//                        logger.log(Level.TRACE, "-yes. added " + targetFormat);
 //                    }
                     result.add(targetFormat);
 //                } else {
 //                    if (TDebug.TraceAudioConverter) {
 //                        boolean e = targetFormat.getEncoding().equals(targetEncoding);
-//                        TDebug.out("-no.\"" + targetFormat.getEncoding() + "\"==\"" + targetEncoding + "\" ?" + e);
+//                        logger.log(Level.TRACE, "-no.\"" + targetFormat.getEncoding() + "\"==\"" + targetEncoding + "\" ?" + e);
 //                    }
                 }
             }
 
-            if (TDebug.TraceAudioConverter) { TDebug.out("<found " + result.size() + " matching formats."); }
+            logger.log(Level.TRACE, "<found " + result.size() + " matching formats.");
             return result.toAudioFormatArray();
         } else {
-            if (TDebug.TraceAudioConverter) { TDebug.out("<returning empty array."); }
+            logger.log(Level.TRACE, "<returning empty array.");
             return EMPTY_FORMAT_ARRAY;
         }
     }
 
-    protected AudioFormat getDefaultTargetFormat(AudioFormat targetFormat,
-                                                 AudioFormat sourceFormat, boolean allowNotSpecified) {
+    protected AudioFormat getDefaultTargetFormat(
+            AudioFormat targetFormat, AudioFormat sourceFormat, boolean allowNotSpecified) {
         // always set bits per sample to MPEG_BITS_PER_SAMPLE
         // set framerate to MPEG_FRAME_RATE, framesize to FRAME_SIZE
         // always retain sample rate
@@ -268,8 +270,7 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
 
     @Override
     protected int getFrameSize(AudioFormat.Encoding encoding, float sampleRate,
-                               int sampleSize, int channels, float frameRate, boolean bigEndian,
-                               int oldFrameSize) {
+                               int sampleSize, int channels, float frameRate, boolean bigEndian, int oldFrameSize) {
         if (encoding.equals(AudioFormat.Encoding.PCM_SIGNED)
                 || encoding.equals(AudioFormat.Encoding.PCM_UNSIGNED)) {
             return super.getFrameSize(encoding, sampleRate, sampleSize,
@@ -318,7 +319,7 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
         public void execute() {
             try {
                 if (encoder == null) {
-                    if (TDebug.TraceAudioConverter) { TDebug.out("mp3 lame encoder is null (already at end of stream)"); }
+                    logger.log(Level.TRACE, "mp3 lame encoder is null (already at end of stream)");
                     getCircularBuffer().close();
                     return;
                 }
@@ -345,9 +346,7 @@ public class LamejbFormatConversionProvider extends TSimpleFormatConversionProvi
                     getCircularBuffer().close();
                 }
             } catch (ArrayIndexOutOfBoundsException | IOException e) {
-                if (TDebug.TraceAudioConverter || TDebug.TraceAllExceptions) {
-                    TDebug.out(e);
-                }
+                logger.log(Level.ERROR, e.getMessage(), e);
             }
         }
 

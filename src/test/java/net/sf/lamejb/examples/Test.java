@@ -49,51 +49,45 @@ public class Test {
         testCodec.encodeStream(wavFile, getMP3FileName(mp3FileBase, 8));
     }
 
-
     public static String getMP3FileName(String mp3FileBase, int num) {
         return mp3FileBase + "_" + num + ".mp3";
     }
-/*    
-    public static void checkFiles(String mp3File,String mp3RefFile) throws IOException
-    {
-        checkFiles(mp3File,mp3RefFile,true);
-    }
-    
-    public static void checkFiles(String mp3File,String mp3RefFile, boolean fully) throws IOException
-    {
-        File fileRes = new File(mp3File);
-        File fileRef = new File(mp3RefFile);
-        
-        if (fileRef.length() == 0) 
-            return; // Mounted Windows directory, cannot check
-        
-        if (fileRef.length() != fileRes.length())
-            throw new RuntimeException("Bad Test, different files");
-        
-        if (!fully) return;
-        
-        BufferedInputStream inputStream1 = new BufferedInputStream(new FileInputStream(mp3File));
-        BufferedInputStream inputStream2 = new BufferedInputStream(new FileInputStream(mp3RefFile));
 
-        byte[] inputBuff1 = new byte[10*1024];
-        byte[] inputBuff2 = new byte[10*1024];        
-        
-        int read;  
-        do
-        {
-            read = inputStream1.read(inputBuff1,0,inputBuff1.length);                     
-            read = inputStream2.read(inputBuff2,0,inputBuff2.length);
-           
-            for(int i = 0; i < read; i++)
-                if (inputBuff1[i] != inputBuff2[i])   
-                {
-                    throw new RuntimeException("Bad Test, different files");
-                }
-        }
-        while(read != 0);
-
-        inputStream1.close();
-        inputStream2.close();        
-    }    
-*/
+//    public static void checkFiles(String mp3File, String mp3RefFile) throws IOException {
+//        checkFiles(mp3File, mp3RefFile, true);
+//    }
+//
+//    public static void checkFiles(String mp3File, String mp3RefFile, boolean fully) throws IOException {
+//        File fileRes = new File(mp3File);
+//        File fileRef = new File(mp3RefFile);
+//
+//        if (fileRef.length() == 0)
+//            return; // Mounted Windows directory, cannot check
+//
+//        if (fileRef.length() != fileRes.length())
+//            throw new RuntimeException("Bad Test, different files");
+//
+//        if (!fully) return;
+//
+//        BufferedInputStream inputStream1 = new BufferedInputStream(new FileInputStream(mp3File));
+//        BufferedInputStream inputStream2 = new BufferedInputStream(new FileInputStream(mp3RefFile));
+//
+//        byte[] inputBuff1 = new byte[10 * 1024];
+//        byte[] inputBuff2 = new byte[10 * 1024];
+//
+//        int read;
+//        do {
+//            read = inputStream1.read(inputBuff1, 0, inputBuff1.length);
+//            read = inputStream2.read(inputBuff2, 0, inputBuff2.length);
+//
+//            for (int i = 0; i < read; i++)
+//                if (inputBuff1[i] != inputBuff2[i]) {
+//                    throw new RuntimeException("Bad Test, different files");
+//                }
+//        }
+//        while (read != 0);
+//
+//        inputStream1.close();
+//        inputStream2.close();
+//    }
 }

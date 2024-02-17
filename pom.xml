@@ -101,9 +101,9 @@
     </dependency>
 
     <dependency>
-      <groupId>org.tritonus</groupId>
+      <groupId>com.github.umjammer.tritonus</groupId> <!-- org.tritonus / com.github.umjammer.tritonus -->
       <artifactId>tritonus-share</artifactId>
-      <version>0.3.12</version> <!-- TODO to be upgraded -->
+      <version>0.3.13</version>
     </dependency>
 
     <dependency>

@@ -46,12 +46,6 @@ public class BeStreamImpl implements BeStream {
         this.outputBufferSize = outputBufferSize;
     }
 
-    @Override
-    protected void finalize() {
-        if (hbeStream.longValue() != 0)
-            close();
-    }
-
     private void checkStreamOpen() {
         if (hbeStream.longValue() == 0)
             throw new LamejbException("Stream is closed");
@@ -108,8 +102,7 @@ public class BeStreamImpl implements BeStream {
     public int encodeChunk(int nSamples, byte[] pSamples, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
-        NativeLong err =
-                BladeMP3Enc.INSTANCE.beEncodeChunk(hbeStream, nSamples, pSamples, pOutput, pdwOutput);
+        NativeLong err = BladeMP3Enc.INSTANCE.beEncodeChunk(hbeStream, nSamples, pSamples, pOutput, pdwOutput);
         BladeUtil.checkError(err);
         return pdwOutput.getValue();
     }
@@ -118,8 +111,7 @@ public class BeStreamImpl implements BeStream {
     public int encodeChunkFloatS16NI(NativeLong hbeStream, int nSamples, float[] buffer_l, float[] buffer_r, byte[] pOutput) {
         checkStreamOpen();
         IntByReference pdwOutput = new IntByReference();
-        NativeLong err =
-                BladeMP3Enc.INSTANCE.beEncodeChunkFloatS16NI(hbeStream, nSamples, buffer_l, buffer_r, pOutput, pdwOutput);
+        NativeLong err = BladeMP3Enc.INSTANCE.beEncodeChunkFloatS16NI(hbeStream, nSamples, buffer_l, buffer_r, pOutput, pdwOutput);
         BladeUtil.checkError(err);
         return pdwOutput.getValue();
     }
