@@ -1,4 +1,4 @@
-[![GitHub Packages](https://github.com/umjammer/lamejb/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/maven-publish.yml)
+[![Release](https://jitpack.io/v/umjammer/lamejb.svg)](https://jitpack.io/#umjammer/lamejb)
 [![Java CI](https://github.com/umjammer/lamejb/actions/workflows/maven.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/umjammer/lamejb/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/umjammer/lamejb/actions/workflows/codeql-analysis.yml)
 ![Java](https://img.shields.io/badge/Java-17-b07219)
@@ -7,7 +7,7 @@
 
 <img src="https://lame.sourceforge.io/images/logo.gif" width="120" /><sub><a href="http://www.brightercreative.co.uk/">© Sam Fisher</a></sub>
 
-Java Sound SPI over lamejb (jna)
+MP3 Java Sound SPI over lamejb (jna)
 
 ## Install
 
@@ -27,11 +27,11 @@ $ brew install lame
 
 e.g.
 
-`-Djna.library.path=/opt/local/lib`
+`-Djna.library.path=/opt/homebrew/lib`
 
 ## Usage
 
-TBD
+ [sample](src/test/java/vavi/sound/sampled/lamejb/Test3.java)
 
 ## References
 
@@ -41,6 +41,7 @@ TBD
 
 * ~~encoding parameter by properties~~
 * ~~AudioFileWriter sample~~
+* rename to vavi-sound-mp3-lamejb
 
 ---
 
